@@ -1,9 +1,8 @@
 /* 
- * File:   main.cpp
+ * File: main.cpp
  * Author: Mr. Uriel Salazar
- * Created on February 23, 2015, 9:55 AM
- *      Purpose: Input/Process/Output and
- *                      Flowchart!!!
+ * Created: February 23, 2015, 9:55 AM
+ * Purpose: Input/Process/Output and Flowchart!!!
  */
 
 //System Libraries
@@ -26,10 +25,10 @@ int main(int argc, char** argv) {
     float payRate, hrsWrkd, payChk;
     //Prompt the user for inputs
     cout<<"This program calculates your Gross Paycheck."<<endl;
-    cout<<"Input your Pay Rate as $XX.XX, provide the X's."<<endl;
+    cout<<"Input your Pay Rate as $xx.xx, provide the x's."<<endl;
     cin>>payRate;
     cout<<"Input your hours Worked this period."<<endl;
-    cout<<"Format XXX.X, provide the X's."<<endl;
+    cout<<"Format xxx.x, provide the x's."<<endl;
     cin>>hrsWrkd;
     //Calculate the Paycheck
     payChk=payRate*hrsWrkd;

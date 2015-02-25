@@ -1,5 +1,5 @@
 /* 
- * File:   main.cpp
+ * File: main.cpp
  * Author: Mr. Uriel Salazar
  * Created: February 18, 2015, 9:55 AM
  * Purpose: Our First Program!

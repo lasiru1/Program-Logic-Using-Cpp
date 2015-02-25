@@ -7,7 +7,7 @@
 
 //System Libraries
 #include <iostream>//I/O Library
-using namespace std;// I/O Lubrary under std namespace
+using namespace std;// I/O Library under std namespace
 
 // User Libraries
 

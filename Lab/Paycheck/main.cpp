@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
     //  Pay Rate = payRate -> $'s/hr
     //  Hours Worked = hrsWrked -> hrs
     //Output:
-    //  Gross Pay Check amount = payChk
+    //  Gross Pay Check amount = payChk -> payRate*hrsWrkd
     float payRate, hrsWrkd, payChk;
     //Prompt the user for inputs
     cout<<"This program calculates your Gross Paycheck."<<endl;

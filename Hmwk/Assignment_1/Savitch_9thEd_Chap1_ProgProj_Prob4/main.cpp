@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
     cin>>time;
     //Calculate Distance
     dstnce=static_cast<float>(1)/2*G*time*time;
-    //dstnce=1/2*G*time*time;//Does not work!!!!!!!!
+    //dstnce=1/2*G*time*time;//DOES NOT WORK!!!!!
     //dstnce=1.0f/2*G*time*time;
     //dstnce=1/2.0f*G*time*time;
     //dstnce=G*1/2*time*time;

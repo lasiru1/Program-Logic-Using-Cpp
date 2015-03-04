@@ -1,6 +1,6 @@
 /* 
  * File:    main.cpp
- * Author:  rcc
+ * Author:  Uriel Salazar
  * Created: March 4, 2015, 10:29 AM
  * Purpose: 3rd Homework Problem
  */

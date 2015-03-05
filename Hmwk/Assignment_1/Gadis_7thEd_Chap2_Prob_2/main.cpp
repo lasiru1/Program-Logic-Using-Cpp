@@ -2,7 +2,7 @@
  * File:    main.cpp
  * Author:  Uriel Salazar
  * Created: March 4, 2015, 10:29 AM
- * Purpose: 3rd Homework Problem
+ * Purpose: 3rd Homework Problem (Sales Prediction)
  */
 
 //System Libraries

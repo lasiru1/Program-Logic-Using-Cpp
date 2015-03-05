@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Uriel Salazar
  * Created: March 4, 2015, 7:51 PM
- * Purpose: 3rd Homework Assignment 
+ * Purpose: 4th Homework Problem (Sales Tax)
  */
 
 //System Libraries

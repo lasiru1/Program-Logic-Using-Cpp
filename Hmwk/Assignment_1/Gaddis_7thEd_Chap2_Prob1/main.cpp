@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
     fVal=6.2e1;//First Value
     sVal=9.9e1;//Second Value
     total=fVal+sVal;//The Sum of the two Values
-    //Output Everything
+    //Output Everything!
     cout<<"The Sum of Two Numbers"<<endl;
     cout<<"Known/Given Values:"<<endl;
     cout<<"First Value = "<<fVal<<endl;

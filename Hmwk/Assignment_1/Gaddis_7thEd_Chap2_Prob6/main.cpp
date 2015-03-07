@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Uriel Salazar
  * Created: March 6, 2015, 9:49 PM
- * Purpose: 
+ * Purpose: 7th Homework Problem (Annual Pay)
  */
 
 //System Libraries

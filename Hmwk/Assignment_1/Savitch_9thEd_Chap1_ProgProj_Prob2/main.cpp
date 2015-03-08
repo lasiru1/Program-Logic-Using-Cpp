@@ -19,7 +19,7 @@ using namespace std;//I/O Library under Standard Namespace
 int main(int argc, char** argv) {
     //Declare Variables
 
-    //Output Diamond
+    //Output Large CS
     cout<<"**************************************************"<<endl;
     cout<<""<<endl;
     cout<<"          C C C           S S S S        !!       "<<endl;

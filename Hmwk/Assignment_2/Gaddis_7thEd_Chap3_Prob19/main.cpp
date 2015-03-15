@@ -14,7 +14,7 @@ using namespace std;    //I/O Library under Standard Namespace
 //User Libraries
 
 //Global Constants
-const float PI=3.141593e0;
+const double PI=3.1415926535897932e0;
 const float SLCAREA=1.4125e1;
 const float GUESTS=4e0;
 

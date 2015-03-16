@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Uriel Salazar
  * Created: March 15, 2015, 7:43 PM
- * Purpose: 
+ * Purpose: Box Office
  */
 
 //System Libraries

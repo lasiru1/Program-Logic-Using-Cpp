@@ -16,7 +16,7 @@ using namespace std;    //I/O Library under Standard Namespace
 //Global Constants
 const float THTRCUT = (2e1 / 1e2);    //Theater keeps 20% of gross box office
 const float ADPRICE = 6e0;            //Adult ticket prices are $6.00
-const float CHPRICE = 3e0;            //Child ticker prices are $3.00
+const float CHPRICE = 3e0;            //Child ticket prices are $3.00
 
 //Function Prototypes
 
@@ -40,9 +40,9 @@ int main(int argc, char** argv)
     cin.ignore();
     
     //Calculate
-    gProfit = (aTix * ADPRICE) + (cTix * CHPRICE);   //Gross Box Office Profit
-    nProfit = gProfit * THTRCUT;                     //Net Box Office Profit
-    dstrbtr = gProfit - nProfit;                     //Amont sent to Distributor
+    gProfit = (aTix * ADPRICE) + (cTix * CHPRICE);  //Gross Box Office Profit
+    nProfit = gProfit * THTRCUT;                    //Net Box Office Profit
+    dstrbtr = gProfit - nProfit;                    //Amount sent to Distributor
     
     //Output Report
     cout << "\n";

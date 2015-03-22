@@ -56,6 +56,7 @@ int main(int argc, char** argv)
     cout << setw(9) << (!x&&!y? 'T' : 'F');
     cout << endl;
     
+    //Output the second row of the table
     x = true; y = false;
     cout << setw(4) << (x? 'T' : 'F');
     cout << setw(4) << (y? 'T' : 'F');
@@ -72,6 +73,7 @@ int main(int argc, char** argv)
     cout << setw(9) << (!x&&!y? 'T' : 'F');
     cout << endl;
     
+    //Output the third row of the table
     x = false; y = true;
     cout << setw(4) << (x? 'T' : 'F');
     cout << setw(4) << (y? 'T' : 'F');
@@ -88,6 +90,7 @@ int main(int argc, char** argv)
     cout << setw(9) << (!x&&!y? 'T' : 'F');
     cout << endl;
     
+    //Output the fourth row of the table
     x = false; y = false;
     cout << setw(4) << (x? 'T' : 'F');
     cout << setw(4) << (y? 'T' : 'F');

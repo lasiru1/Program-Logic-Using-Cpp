@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Uriel Salazar
  * Created: March 16, 2015, 8:10 AM
- * Purpose: Paycheck -> If Else
+ * Purpose: Paycheck -> Ternary
  */
 
 //System Libraries
@@ -21,7 +21,7 @@ using namespace std;    //I/O Library under Standard Namespace
 int main(int argc, char** argv)
 {
     //Declare Variables
-    ofstream output;            //Output the reults in a file
+    ofstream out;               //Output the reults in a file
     float hrsWkd;               //Hours Worked (hra)
     float payRate;              //Pay Rate ($'s/hr)
     float oRate = 1.5f;         //Multiplicative factor of payRate
@@ -32,21 +32,24 @@ int main(int argc, char** argv)
     out.open("Payroll.dat");
     
     //Prompt
-    cout << "How many hours?"
+    cout << "How many hours did you work this week? ";
     cin >> hrsWkd;
-    cout << "What is pay rate?"
+    cout << "What is your pay rate? ($/hr) ";
     cin >> payRate;
     
     //Calculate the paycheck
-    if (hrsWkd < oTime) {
-            payChk = payRate * hrsWkd;
-    }  else
-            payChk = payRate * (hrsWkd + (oRate - 1) * (hrsWkd - oTime));
+    if (hrsWkd < oTime)
+    {       
+        payChk = payRate * hrsWkd;
     }
-            
-    //Output the results to the screen
+    else
+    {
+        payChk = payRate * (hrsWkd + (oRate - 1) * (hrsWkd - oTime));
+    }        
+   
+    //Output
     cout << fixed << setprecision(2) << showpoint;
-    cout << "Hours Worked = " << hrsWkd << "(hrs)" <<endl;
+    cout << "\nHours Worked = " << hrsWkd << "(hrs)" <<endl;
     cout << "Pay Rate = $" << payRate << "(/hr)" <<endl;
     cout << "Overtime Rate = " << oRate <<endl;
     cout << "Overtime begins at " << oTime << "(hrs)" <<endl;
@@ -66,4 +69,3 @@ int main(int argc, char** argv)
     //Exit Stage Right!
     return 0;
 }
-

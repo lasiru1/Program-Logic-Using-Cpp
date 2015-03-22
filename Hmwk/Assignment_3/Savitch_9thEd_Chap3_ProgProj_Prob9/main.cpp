@@ -22,22 +22,20 @@ using namespace std;    //I/O Library under Standard Namespace
 int main(int argc, char** argv)
 {
     //Declare Variables
-    unsigned short door1, door2, door3, choice;
+    unsigned int car, cPrize1, cPrize2, choice;
     
-    //Get the system time
-    unsigned int seed=time(0);
-    
-    //Seed the Random Number Generator
-    srand(seed);
+    srand(time(0));     //Seed the Random Number Generator
     
     //Generate Random Numbers
-    door1 = 1 + rand()%3;
-    door2 = 1 + rand()%3;
-    door3 = 1 + rand()%3;
+    car = (rand()%6) + 1;
+    cPrize1 = (rand()%6) + 1;
+    cPrize2 = (rand()%6) + 1;
+    choice = (rand()%6) + 1;
     
-    cout << door1 << endl;
-    cout << door2 << endl;
-    cout << door3 << endl;
+    cout << car << endl;
+    cout << cPrize1 << endl;
+    cout << cPrize2 << endl;
+    cout << choice << endl;
     
     
     //Exit Stage Right!

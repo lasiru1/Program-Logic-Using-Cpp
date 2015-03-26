@@ -25,23 +25,21 @@ int main(int argc, char** argv)
     float vwdHrs;               //Hours viewed (hrs)
     char package;               //Package AaBbCc
     const int SIZE = 40;        //Max size of name = 39 characters
-    char name[SIZE];            //
-    float bill;                 //Toatl Cable Bill
+    char name[SIZE];            //Customer Name
+    float bill;                 //Cable Bill ($s)
     
     //Open the file
     out.open("Payroll.dat");
     
-    //Prompt
+    //Prompt user for inputs
     cout << "How many hours did you view this month? ";
     cin >> vwdHrs;
     cout << "What is your package? (A, B, C) ";
     cin >> package;
     cout << "What is the customer name? ";
-    cin.getline(name, SIZE);
     cin.ignore();
-    
-    
-    
+    cin.getline(name, SIZE);
+   
     //Calculate the paycheck
     switch (package)
     {

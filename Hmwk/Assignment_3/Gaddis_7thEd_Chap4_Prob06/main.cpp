@@ -18,7 +18,7 @@ const float G = 9.8e0;
 //Function Prototypes
 
 //Execution Begins Here!
-int main(int argc, char** argv)
+int main()
 {
     //Declare Variables
     float mass = 0;
@@ -32,7 +32,7 @@ int main(int argc, char** argv)
     cout << "\nEnter the mass of your item in kilograms: ";
     
     //Validate input
-    while (!(cin >> mass))
+    while (!(cin >> mass) || (mass < 0))
     {
         cout << "\nError! Please enter a nonnegative number: ";
         cin.clear();

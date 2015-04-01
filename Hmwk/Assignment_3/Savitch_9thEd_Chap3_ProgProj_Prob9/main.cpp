@@ -1,16 +1,18 @@
-/* 
- * File:   main.cpp
- * Author: Uriel Salazar
- * Created: March 22, 2015, 10:32 AM
- * Purpose: The Monty Hall Game Show Problem
- */
+//File: main.cpp
+//========================================
+//Programmer: Uriel Salazar
+//========================================
+//Created: March 22, 2015, 10:32 AM
+//========================================
+//Purpose: The Monty Hall Game Show Problem
+//========================================
 
 //System Libraries
 #include <iostream>     //I/O Library
 #include <iomanip>      //Parametric Library
 #include <cstdlib>      //Gerneral Utilities Library
 #include <ctime>        //Date and Time Library
-using namespace std;    //I/O Library under Standard Namespace
+using namespace std;    //I/O Library under standard name space
 
 //User Libraries
 
@@ -18,7 +20,7 @@ using namespace std;    //I/O Library under Standard Namespace
 
 //Function Prototypes
 
-//Execution Begins Here!
+//Execution begins
 int main(int argc, char** argv)
 {
     //Declare Variables
@@ -56,7 +58,7 @@ int main(int argc, char** argv)
             choiceB = (rand() % 3) + 1;
         } while (choiceB == cnPrize || choiceB == choiceA);
         
-        //Randomly choose to stick with the origial choice or switch choices
+        //Randomly choose to stick with the original choice or switch choices
         //choiceB = 1 or 2. 1 -> stay, else, -> switch.
         change = (rand() % 2) + 1;
         
@@ -79,11 +81,11 @@ int main(int argc, char** argv)
         }
     }
 
-    //Ouput the Results
-    cout << tallyA << endl;
-    cout << tallyB << endl;  
+    //Output the Results
+    cout << "Wins = " << tallyA << endl;
+    cout << "Losses = " << tallyB << endl;  
 
 
-    //Exit Stage Right!
+    //Exit program
     return 0;
 }

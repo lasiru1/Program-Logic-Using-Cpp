@@ -29,7 +29,7 @@ int main()
     
     //Declare Variables
     int nGames, win = 0, loss = 0;
-    char door, doorOpn;
+    char door, doorOpn, prize;
     char stay;
 
     //Prompt user for inputs
@@ -38,9 +38,35 @@ int main()
     cin >> nGames;
     cout << "Are you going to stay if given the opportunity type S for Stay\n";
     cout << "Type anything else to choose the other doors"  << endl;
+    cin >> stay;
     
+    //Loop for all the games
+    for (int game = 1; game <= nGames; game++)
+    {       
+        //Randomly choose your door
+        door = rand() % 3 + 1;
     
-
+        //Randomly Choose the prize door
+        prize = rand() % 3 + 1;
+        
+        //Randomly choose your door
+        do {    
+             door = rand() % 3 +1;
+        } while (door == doorOpn || prize == doorOpn);    
+        
+        //Swap the doors if given the opportunity
+        
+        
+        //Statistically count how many wins and losses
+        if (door == prize) win++;
+        else loss++;
+      }  
+        
+    //Output the results    
+    cout << "Out of " << nGames << " played!\n";
+    cout << "I Win by staying --> " << win << " times!\n";
+    cout << "vs losing " << loss << " times!\n";
+    
     //Exit Program
     return 0;
 }

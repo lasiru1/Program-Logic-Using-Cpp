@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Uriel Salazar
  * Created: March 25, 2015, 8:33 PM
- * Purpose: Roman Numeral Converer
+ * Purpose: Roman Numeral Converter
  */
 
 //System Libraries

@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Uriel Salazar
  * Created: March 28, 2015, 1:43 PM
- * Purpose: Time Calculator
+ * Purpose: Mass and Weight 
  */
 
 //System Libraries

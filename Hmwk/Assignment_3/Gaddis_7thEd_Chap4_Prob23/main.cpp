@@ -18,10 +18,10 @@ using namespace std;    //I/O Library under Standard Namespace
 //Function Prototypes
 
 //Execution Begins Here!
-int main(int argc, char** argv)
+int main()
 {
     //Declare Variables
-    ofstream out;               //Output the reults to a file
+    ofstream out;               //Output the results to a file
     float vwdHrs;               //Hours viewed (hrs)
     char package;               //Package AaBbCc
     const int SIZE = 40;        //Max size of name = 39 characters
@@ -29,7 +29,7 @@ int main(int argc, char** argv)
     float bill;                 //Cable Bill ($s)
     
     //Open the file
-    out.open("Payroll.dat");
+    out.open("CableBill.dat");
     
     //Prompt user for inputs
     cout << "How many hours did you view this month? ";
@@ -44,37 +44,53 @@ int main(int argc, char** argv)
     switch (package)
     {
         case 'A' :
-        case 'a' : {
+        case 'a' :
+        {
             bill = 9.95;
-            if (vwdHrs > 10)bill += 2 * (vwdHrs-10);
+            if (vwdHrs > 10)
+            {
+                bill += 2 * (vwdHrs-10);
+            }
             break;
         }
         case 'B' :
-        case 'b' : {
+        case 'b' :
+        {
             bill = 14.95;
-            if (vwdHrs > 10)bill += 2 * (vwdHrs-10);
+            if (vwdHrs > 20)
+            {
+                bill += 2 * (vwdHrs-10);
+            }
             break;
         }
         case 'C' :
-        case 'c' : {
+        case 'c' :
+        {
             bill = 19.95;
-            if (vwdHrs > 10)bill += 2 * (vwdHrs-10);
             break;
         }
-        default: cout << "Wrong Package Chosen" << endl;        
+        default: cout << "Wrong Package Chosen!" << endl;        
     };
            
     //Output
+    cout << fixed << setprecision(2) << showpoint << "\n\n";
+    cout << "Your Cable Bill from CSC5 RCC Programming Class:" << endl;
+    cout << "Customer Name: " << name << endl;
+    cout << "Package: " << package <<endl;
+    cout << "Hours Viewed: " << vwdHrs <<endl;
+    cout << "Amount Owed: $" << bill << endl;
+    
+    //Output to the file
     out << fixed << setprecision(2) << showpoint;
     out << "Your Cable Bill from CSC5 RCC Programming Class:" << endl;
     out << "Customer Name: " << name << endl;
     out << "Package: " << package <<endl;
     out << "Hours Viewed: " << vwdHrs <<endl;
-    out << "Amount Owed: " << bill << endl;
+    out << "Amount Owed: $" << bill << endl;
     
     //Close the file
     out.close();
     
-    //Exit Stage Right!
+    //Exit Program!
     return 0;
 }

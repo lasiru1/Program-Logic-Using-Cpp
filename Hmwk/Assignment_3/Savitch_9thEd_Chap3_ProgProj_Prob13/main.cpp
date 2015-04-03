@@ -10,7 +10,7 @@
 //System Libraries
 #include <iostream>	//Input/Output Library
 #include <iomanip>      //Parametric Library
-using namespace std;	//Input/Output Library under standard namespace
+using namespace std;	//Input/Output Library under standard name space
 
 //User Libraries
 

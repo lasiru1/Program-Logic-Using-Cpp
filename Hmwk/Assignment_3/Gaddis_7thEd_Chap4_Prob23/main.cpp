@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: Uriel Salazar
  * Created: March 16, 2015, 8:10 AM
- * Purpose: Paycheck -> Ternary
+ * Purpose: Internet Service Provider
  */
 
 //System Libraries

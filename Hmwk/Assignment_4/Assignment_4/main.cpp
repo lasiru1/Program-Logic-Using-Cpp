@@ -30,10 +30,7 @@ int main()
     do
     {
         //Display the menu
-        if (another == 'Y' || another == 'y');
-        {
-            cout << "\n";
-        }    
+        cout << "\n";
         cout << setw(25) << "* CSC5 Assignment 4 *\n";
         cout << setw(25) << "---------------------\n";
         cout << "A. \"Distance Traveled\"\n";
@@ -70,14 +67,20 @@ int main()
         //Solve a problem that has been chosen
         switch (choice)
         {           
-            case 'A' : distance_traveled();break;
-            case 'a' : distance_traveled();break;
+            case 'A' : distance_traveled(); break;
+            case 'a' : distance_traveled(); break;
+            case 'B' : pennies_for_pay();  break;
+            case 'b' : pennies_for_pay();  break;
         };
         
        //Prompt for another solution
        cout << "\nWould you like to solve another problem? (Y/N) ";
        cin >> another;
     } while (another == 'Y' || another == 'y');
+    if (another != 'Y' || another != 'y')
+    {
+        cout << "\nGood-bye!" << endl;
+    }
     
     //Exit Program
     return 0;
@@ -127,15 +130,45 @@ void distance_traveled()
 //************************** Pennies for Pay *******************************//
 void pennies_for_pay()
 {
+    //Declare Variables
+    int nDays;
+    double salary, total;
+
+    //prompt user for input & validate
+    cout << setw(39) << "* Pennies for Pay *\n";
+    cout << setw(39) << "-------------------\n";
+    cout << "Due to the new \"Penny Act\" proposed by the US Federal Government"
+            ",\nyour salary will start out at 1 penny, and double for each day"
+            "\nworked. This program will display your payment schedule.\n";
+    cout << "\nPlease enter the number of days you plan to work: ";
+    while (!(cin >> nDays) || (nDays < 0))
+    {
+        cout << "\nERROR: Days worked must be a nonnegative number: ";
+        cin.clear();
+        cin.ignore(1e9, '\n');
+    }
+    cout << "\n";
+    cout << setw(39) << "Day        Salary \n";
+    cout << setw(39) << "---       --------\n";
     
+    //Initialize "salary" and "total"
+    salary = 0.01, total = 0;
+       
+    //Loop the number of days
+    for (int i = 1; i <= nDays; i++)
+    {   
+        cout << setprecision(2) << fixed;
+        cout << setw(22) << i << setw(10) << "$" << salary << endl;
+        
+        //Add all payments
+        total += salary;
+        
+        //Double the salary each day
+        salary *= 2;
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    //Output the total pay
+    cout << "\nYour total amount earned over " << nDays << " days will be: $" 
+         << total << endl;
+    cout << "\n";
 }

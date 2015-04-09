@@ -16,12 +16,14 @@ using namespace std;    //Input/Output Library under standard name space
 //User Libraries
 
 //Global Constants
-const short MONTHS = 12;
+const short MONTHS = 12;        // Number of months in a year  
+const float CNVPCNT = 100.0f;   //Convert to a percentage
 
 //Function Prototypes
-void distance_traveled();
-void pennies_for_pay();
-void average_rainfall();
+void dst_tld();
+void pen_pay();
+void a_rnfal();
+void poplatn();
 
 //Execution Begins
 int main()
@@ -70,12 +72,14 @@ int main()
         //Solve a problem that has been chosen
         switch (choice)
         {           
-            case 'A' : distance_traveled(); break;
-            case 'a' : distance_traveled(); break;
-            case 'B' : pennies_for_pay();  break;
-            case 'b' : pennies_for_pay();  break;
-            case 'C' : average_rainfall(); break;
-            case 'c' : average_rainfall(); break;
+            case 'A' : dst_tld(); break;
+            case 'a' : dst_tld(); break;
+            case 'B' : pen_pay(); break;
+            case 'b' : pen_pay(); break;
+            case 'C' : a_rnfal(); break;
+            case 'c' : a_rnfal(); break;
+            case 'D' : poplatn(); break;
+            case 'd' : poplatn(); break;
         };
         
        //Prompt for another solution
@@ -92,7 +96,7 @@ int main()
 }
 
 //************************** Distance Traveled *******************************//
-void distance_traveled()
+void dst_tld()
 {
     //Declare Variables
     float vSpeed, hrs, dstance;
@@ -133,7 +137,7 @@ void distance_traveled()
 }
 
 //************************** Pennies for Pay *******************************//
-void pennies_for_pay()
+void pen_pay()
 {
     //Declare Variables
     int nDays;
@@ -179,7 +183,7 @@ void pennies_for_pay()
 }
 
 //************************** Average Rainfall *******************************//
-void average_rainfall()
+void a_rnfal()
 {
     //Declare Variables
     short nYears, nMonths;
@@ -239,4 +243,66 @@ void average_rainfall()
      cout << "California's average rainfall for the past " << nYears <<
              " years: " << aveRain << " in./month." << endl;
      cout << "\n";
+}
+
+//****************************** Population *********************************//
+void poplatn()
+{
+    //Declare Variables
+    float cPopltn;      //Current population
+    float dIncrse;      //Daily Increase
+    float nDays;        //Number of days to multiply by
+    float pGrowth;      //Population Growth
+
+    //prompt user for inputs & validate
+    cout << setw(37) << "* Population *\n";
+    cout << setw(37) << "--------------\n";
+    cout << "The population of Sphaerodactylus ariasae (Dwarf Gecko) is"
+            "\nsuspected to have a large increase in population over the next"
+            "\nfew years. This program will calculate and display the rise of"
+            "\norganisms per day.";
+    cout << "\nEnter the current population size to the nearest gecko: ";
+    while (!(cin >> cPopltn) || (cPopltn < 2))
+    {
+        cout << "\nERROR: The current population can be no less than 2: "
+                "\nRe-enter the current population size: ";
+        cin.clear();
+        cin.ignore(1e9, '\n');
+    }
+    cout << "\nEnter the average percentage of the daily growth rate: ";
+    while (!(cin >> dIncrse) || (dIncrse < 0))
+    {
+        cout << "\nERROR: The average percentage must be a positive value: "
+                "\nRe-enter the average percentage: ";
+        cin.clear();
+        cin.ignore(1e9, '\n');
+    }
+    cout << "\nEnter the number of days to calculate: ";
+    while (!(cin >> nDays) || (nDays < 0))
+    {
+        cout << "\nERROR: The number of days can be no less than 1: "
+                "\nRe-enter the number of days: ";
+        cin.clear();
+        cin.ignore(1e9, '\n');
+    }
+    
+    //Display table
+    cout << "\n";
+    cout << setw(41) << "Day      Population\n";
+    cout << setw(41) << "---      ----------\n";
+    cout << setprecision(0) << fixed;
+    
+    //Loop the calculation of the population for each day
+    for (int i = 1; i <= nDays; i++)
+    {
+        //Calculate population growth
+        pGrowth = cPopltn + (dIncrse / CNVPCNT * cPopltn);
+        
+        //The current population is now the population Growth
+        cPopltn = pGrowth;
+        
+        //Output the results
+        cout << setw(23) << i << setw(14) << pGrowth << endl;
+    }
+    cout << "\n";
 }

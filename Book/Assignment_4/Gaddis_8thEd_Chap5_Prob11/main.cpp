@@ -26,15 +26,15 @@ int main()
     float cPopltn;      //Current population
     float dIncrse;      //Daily Increase
     float nDays;        //Number of days to multiply by
-    float pSize;        //Total population size
+    float pGrowth;      //Population Growth
 
     //prompt user for inputs & validate
     cout << setw(37) << "* Population *\n";
     cout << setw(37) << "--------------\n";
     cout << "The population of Sphaerodactylus ariasae (Dwarf Gecko) is"
             "\nsuspected to have a large increase in population over the next"
-            "\nfew years. This program will calculate the number of organisms"
-            "\nper day.";
+            "\nfew years. This program will calculate and display the rise of"
+            "\norganisms per day.";
     cout << "\nEnter the current population size to the nearest gecko: ";
     while (!(cin >> cPopltn) || (cPopltn < 2))
     {
@@ -69,12 +69,14 @@ int main()
     //Loop the calculation of the population for each day
     for (int i = 1; i <= nDays; i++)
     {
-        //Calculate population size
-        pSize = cPopltn + (dIncrse / CNVPCNT * cPopltn);
-        pSize = cPopltn ;
+        //Calculate population growth
+        pGrowth = cPopltn + (dIncrse / CNVPCNT * cPopltn);
+        
+        //The current population is now the population Growth
+        cPopltn = pGrowth;
         
         //Output the results
-        cout << setw(23) << i << setw(14) << pSize << endl;
+        cout << setw(23) << i << setw(14) << pGrowth << endl;
     }
     
     //Exit the program

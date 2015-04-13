@@ -390,7 +390,7 @@ void sl_chrt()
     cout << "\n";
 }
 
-//************************* Sales Bar Chart **********************************//
+//********************** Random Number Guessing Game *************************//
 void numGame()
 {
     //Declare Variables
@@ -410,7 +410,7 @@ void numGame()
     cout << "A secret number has been generated! This program will determine"
             "\nwhether your input is greater than or less than that of the"
             "\nsecret number.";
-    cout << "\nEnter a number form 1 - 100: ";
+    cout << "\nEnter a number from 1 - 100: ";
     cin >> guess;
     
     //Loop until number is guessed correctly

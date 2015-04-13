@@ -11,6 +11,8 @@
 #include <iostream>     //Input/Output Library
 #include <iomanip>      //Parametric Library
 #include <string>       //String Library
+#include <cstdlib>      //General Utilites Library
+#include <ctime>        //Time Library
 using namespace std;    //Input/Output Library under standard name space
 
 //User Libraries
@@ -25,6 +27,7 @@ void pen_pay();
 void a_rnfal();
 void poplatn();
 void sl_chrt();
+void numGame();
 
 //Execution Begins
 int main()
@@ -83,6 +86,8 @@ int main()
             case 'd' : poplatn(); break;
             case 'E' : sl_chrt(); break;
             case 'e' : sl_chrt(); break;
+            case 'F' : numGame(); break;
+            case 'f' : numGame(); break;
         };
         
        //Prompt for another solution
@@ -379,5 +384,48 @@ void sl_chrt()
         cout << "*";
         sales5--;
     }
+    cout << "\n";
+}
+
+//************************* Sales Bar Chart **********************************//
+void numGame()
+{
+    //Declare Variables
+    unsigned short rNumber;     //Random number
+    unsigned short guess;       //User's input (guess)
+
+    //Seed the random number generator
+    srand(time(0));
+    
+    //Generate random number
+    rNumber = (rand() % 99) + 1;
+    
+    
+    //Prompt user for input
+    cout << setw(42) << "* Random Number Guessing Game *\n";
+    cout << setw(42) << "-------------------------------\n";
+    cout << "A secret number has been generated! This program will determine"
+            "\nwhether your input is greater than or less than that of the"
+            "\nsecret number.";
+    cout << "\nEnter a number form 1 - 100: ";
+    cin >> guess;
+    
+    //Loop until number is guessed correctly
+    do
+    {
+        if (guess > rNumber)
+        {
+            cout << "Too High, try again: ";
+            cin >> guess;
+        }
+        else if (guess < rNumber)
+        {
+            cout << "Too low, try again: ";
+            cin >> guess;
+        } 
+    } while (guess != rNumber);
+    
+    //Display winning message
+    cout << "\nCongratulations! You've successfully guessed the secret number!";
     cout << "\n";
 }

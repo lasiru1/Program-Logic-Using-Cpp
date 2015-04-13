@@ -28,6 +28,7 @@ void a_rnfal();
 void poplatn();
 void sl_chrt();
 void numGame();
+void sqDsply();
 
 //Execution Begins
 int main()
@@ -88,6 +89,8 @@ int main()
             case 'e' : sl_chrt(); break;
             case 'F' : numGame(); break;
             case 'f' : numGame(); break;
+            case 'G' : sqDsply(); break;
+            case 'g' : sqDsply(); break;
         };
         
        //Prompt for another solution
@@ -428,4 +431,39 @@ void numGame()
     //Display winning message
     cout << "\nCongratulations! You've successfully guessed the secret number!";
     cout << "\n";
+}
+
+//***************************** Square Display *******************************//
+void sqDsply()
+{
+    //Declare Variables
+    short size;
+    
+    //Prompt user for input
+    cout << setw(42) << "* Square Display *\n";
+    cout << setw(42) << "------------------\n";
+    cout << "This program displays the shape of a square whose length and width"
+            "\nis determined by the user's input.";
+    cout << "\nEnter a number from 1 - 15: ";
+    
+    //Validate Input
+    while (!(cin >> size) || (size < 1) || (size > 15))
+    {
+        cout << "\nERROR: Value is not an integer from 1 - 15."
+                "\nRe-enter the number: ";
+        cin.clear();
+        cin.ignore(1e9, '\n');
+    }
+
+    //Begin Looping the character "X"
+    cout << endl;
+    for (int i = 1; i <= size; i++)
+    {
+        cout << setw(30);
+        for (int j = 1; j <= size; j++)
+        {
+            cout << "X";
+        }
+        cout << endl;
+    }
 }

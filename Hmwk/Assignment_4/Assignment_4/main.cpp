@@ -20,6 +20,7 @@ using namespace std;    //Input/Output Library under standard name space
 //Global Constants
 const short MONTHS = 12;        // Number of months in a year  
 const float CNVPCNT = 100.0f;   //Convert to a percentage
+const float G = 6.673e-8;       //Gravitational constant
 
 //Function Prototypes
 void dst_tld();
@@ -30,6 +31,8 @@ void sl_chrt();
 void numGame();
 void sqDsply();
 void pnDsply();
+float grv_frc(float m1, float m2, float d);     //Function for case "I"
+void gravFrc();
 
 //Execution Begins
 int main()
@@ -42,8 +45,9 @@ int main()
     {
         //Display the menu
         cout << "\n";
-        cout << setw(25) << "* CSC5 Assignment 4 *\n";
-        cout << setw(25) << "---------------------\n";
+        cout << setw(25) << " CSC5 Assignment #4 \n";
+        cout << setw(25) << "   by Uri Salazar   \n";
+        cout << setw(25) << "--------------------\n";
         cout << "A. \"Distance Traveled\"\n";
         cout << "B. \"Pennies for Pay\"\n";
         cout << "C. \"Average Rainfall\"\n";
@@ -95,6 +99,8 @@ int main()
             case 'g' : sqDsply(); break;
             case 'H' : pnDsply(); break;
             case 'h' : pnDsply(); break;
+            case 'I' : gravFrc(); break;
+            case 'i' : gravFrc(); break;
         };
         
        //Prompt for another solution
@@ -479,7 +485,7 @@ void pnDsply()
     cout << setw(38) << "* Pattern Displays *\n";
     cout << setw(38) << "--------------------\n";
     cout << "This program displays two triangle-like patterns utilizing"
-            "\n\"nested for-loops\".";
+            "\n\"nested for-loops.\"";
     cout << "\nPress the Enter key to display the patterns... ";
     cin.get();
     cout << endl;
@@ -504,4 +510,54 @@ void pnDsply()
         }
         cout << endl;
     }
+}
+
+//************************* Gravitational Force ******************************//
+void gravFrc()
+{
+    //Declare Variables
+    float mass1, mass2;     //The mass of objects 1 & 2
+    float dstance;          //The distance between the two objects
+    float gForce;           //Gravitational Force
+    unsigned char another;  //Character for repeating program
+
+    //Prompt user for input
+    cout << setw(39) << "* Gravitational Force *\n";
+    cout << setw(39) << "-----------------------\n";
+    cout << "This program calculates the gravitational force between two\n"
+            "bodies using their mass and the distance between them.\n";
+    do
+    {
+        cout << "\nEnter the mass of the first object in kilograms: ";
+        cin >> mass1;
+        cout << "\nEnter the mass of the second object in kilograms: ";
+        cin >> mass2;
+        cout << "\nEnter the distance between the two objects in meters: ";
+        cin >> dstance;
+
+        //Calculate
+        gForce = grv_frc(mass1, mass2, dstance);
+
+        //Output the results
+        cout << "\nBased on the distance of " << dstance << " meters, the\n"
+                "gravitational force between a " << mass1 << " kilogram object\n"
+                "and a " << mass2 << " kilogram object is approximately:\n\n"
+             << gForce << " dynes.";
+        cout << endl;
+        cout << "\nWould you like to repeat this calculation? (Y/N) ";
+        cin >> another;
+    } while (another == 'Y' || another == 'y');
+}
+
+float grv_frc(float m1, float m2, float d)
+{
+    //Declare variables
+    float force;
+    
+    //Calculate
+    force = (G * m1 * m2) / (d * d);
+    
+    //Output
+    return (force);
+    
 }

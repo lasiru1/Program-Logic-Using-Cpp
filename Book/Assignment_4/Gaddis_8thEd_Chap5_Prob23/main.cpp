@@ -21,6 +21,15 @@ using namespace std;    //Input/Output Library under standard name space
 //Execution Begins
 int main()
 {
+    //Prompt user for input
+    cout << setw(38) << "* Pattern Displays *\n";
+    cout << setw(38) << "--------------------\n";
+    cout << "This program displays two triangle-like patterns utilizing"
+            "\n\"nested for-loops\".";
+    cout << "\nPress the Enter key to display the patterns... ";
+    cin.get();
+    cout << endl;
+    
     //Pattern A
     for (int i = 1; i <= 10; i++)
     {
@@ -45,4 +54,4 @@ int main()
 
     //Exit Program
     return 0;
-}
+}-

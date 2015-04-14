@@ -29,6 +29,7 @@ void poplatn();
 void sl_chrt();
 void numGame();
 void sqDsply();
+void pnDsply();
 
 //Execution Begins
 int main()
@@ -57,7 +58,8 @@ int main()
         
         //Prompt for input
         cout << "Which problem would you like to solve? ";
-        cin >> choice;        
+        cin >> choice;
+        cin.ignore();
         
         //Conditions for exiting the program
         if (choice != 'A' && choice != 'a' && choice != 'B' && choice != 'b' &&
@@ -91,6 +93,8 @@ int main()
             case 'f' : numGame(); break;
             case 'G' : sqDsply(); break;
             case 'g' : sqDsply(); break;
+            case 'H' : pnDsply(); break;
+            case 'h' : pnDsply(); break;
         };
         
        //Prompt for another solution
@@ -463,6 +467,40 @@ void sqDsply()
         for (int j = 1; j <= size; j++)
         {
             cout << "X";
+        }
+        cout << endl;
+    }
+}
+
+//*************************** Pattern Displays *******************************//
+void pnDsply()
+{
+    //Prompt user for input
+    cout << setw(38) << "* Pattern Displays *\n";
+    cout << setw(38) << "--------------------\n";
+    cout << "This program displays two triangle-like patterns utilizing"
+            "\n\"nested for-loops\".";
+    cout << "\nPress the Enter key to display the patterns... ";
+    cin.get();
+    cout << endl;
+    
+    //Pattern A
+    for (int i = 1; i <= 10; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            cout << "+";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    
+    //Pattern B
+    for (int i = 10; i >= 1; i--)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            cout << "+";
         }
         cout << endl;
     }

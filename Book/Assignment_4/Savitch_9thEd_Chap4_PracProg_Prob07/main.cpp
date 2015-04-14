@@ -24,31 +24,37 @@ float grv_frc(float m1, float m2, float d);
 int main()
 {
     //Declare Variables
-    float mass1, mass2;    //The mass of objects 1 & 2
-    float dstance;         //The distance between the two objects
-    float gForce;          //Gravitational Force
+    float mass1, mass2;     //The mass of objects 1 & 2
+    float dstance;          //The distance between the two objects
+    float gForce;           //Gravitational Force
+    unsigned char another;  //Character for repeating program
 
     //Prompt user for input
     cout << setw(39) << "* Gravitational Force *\n";
     cout << setw(39) << "-----------------------\n";
     cout << "This program calculates the gravitational force between two\n"
             "bodies using their mass and the distance between them.\n";
-    cout << "\nEnter the mass of the first object in kilograms: ";
-    cin >> mass1;
-    cout << "\nEnter the mass of the second object in kilograms: ";
-    cin >> mass2;
-    cout << "\nEnter the distance between the two objects in meters: ";
-    cin >> dstance;
-    
-    //Calculate
-    gForce = grv_frc(mass1, mass2, dstance);
-    
-    //Output the results
-    cout << "\nBased on the distance of " << dstance << " meters, the\n"
-            "gravitational force between a " << mass1 << " kilogram object\n"
-            "and a " << mass2 << " kilogram object is approximately:\n\n"
-         << gForce << " dynes.";
-    cout << endl;
+    do
+    {
+        cout << "\nEnter the mass of the first object in kilograms: ";
+        cin >> mass1;
+        cout << "\nEnter the mass of the second object in kilograms: ";
+        cin >> mass2;
+        cout << "\nEnter the distance between the two objects in meters: ";
+        cin >> dstance;
+
+        //Calculate
+        gForce = grv_frc(mass1, mass2, dstance);
+
+        //Output the results
+        cout << "\nBased on the distance of " << dstance << " meters, the\n"
+                "gravitational force between a " << mass1 << " kilogram object\n"
+                "and a " << mass2 << " kilogram object is approximately:\n\n"
+             << gForce << " dynes.";
+        cout << endl;
+        cout << "\nWould you like to repeat this calculation? (Y/N) ";
+        cin >> another;
+    } while (another == 'Y' || another == 'y');
 
     //Exit Program
     return 0;

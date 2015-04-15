@@ -559,5 +559,4 @@ float grv_frc(float m1, float m2, float d)
     
     //Output
     return (force);
-    
 }

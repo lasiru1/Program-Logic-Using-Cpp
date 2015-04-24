@@ -40,11 +40,6 @@ int main()
     //Repeat the menu
     do
     {
-        //New line if menu is repeated
-        if(another == 'Y' || another == 'y')
-        {
-            cout << endl;
-        }
         
         //Display the menu
         cout << setw(25) << " CSC5 Assignment #5 \n";

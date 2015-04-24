@@ -15,18 +15,20 @@ using namespace std;    //Input/Output Library under standard name space
 //User Libraries
 
 //Global Constants
+const float CNVPCNT = 100;              //Convert percentages
 
 //Function Prototypes
-void markup();          //Markup
-void winDvsn();         //Winning Division
-void sfsDrvg();         //Safest Driving Area
-void flgDist();         //Falling Distance
-void kntcNrg();         //Kinetic Energy
-void tmp_tbl();         //Celsius Temperature Table
-void cnToss();          //Coin Toss
-void prsntVl();         //Present Value
-void vrHsptl();         //Overloaded Hospital
-void rpsGame();         //Rock, Paper, Scissors Game
+void markup();                          //Markup
+float clctRtl(float w, float m);        //Markup function
+void winDvsn();                         //Winning Division
+void sfsDrvg();                         //Safest Driving Area
+void flgDist();                         //Falling Distance
+void kntcNrg();                         //Kinetic Energy
+void tmp_tbl();                         //Celsius Temperature Table
+void cnToss();                          //Coin Toss
+void prsntVl();                         //Present Value
+void vrHsptl();                         //Overloaded Hospital
+void rpsGame();                         //Rock, Paper, Scissors Game
 
 
 //Execution Begins
@@ -38,8 +40,13 @@ int main()
     //Repeat the menu
     do
     {
+        //New line if menu is repeated
+        if(another == 'Y' || another == 'y')
+        {
+            cout << endl;
+        }
+        
         //Display the menu
-        cout << "\n";
         cout << setw(25) << " CSC5 Assignment #5 \n";
         cout << setw(25) << "   by Uri Salazar   \n";
         cout << setw(25) << "--------------------\n";
@@ -58,57 +65,48 @@ int main()
         //Prompt for input
         cout << "Which problem would you like to solve? ";
         cin >> choice;
-        cin.ignore();
-        
-        //Conditions for exiting the program
-        if (choice != 'A' && choice != 'a' && choice != 'B' && choice != 'b' &&
-            choice != 'C' && choice != 'c' && choice != 'D' && choice != 'd' &&
-            choice != 'E' && choice != 'e' && choice != 'F' && choice != 'f' &&
-            choice != 'G' && choice != 'g' && choice != 'H' && choice != 'h' &&
-            choice != 'I' && choice != 'i' && choice != 'J' && choice != 'j')
-        {
-            cout << "\nGood-bye!" << endl;
-            return 0;
-        }
-        else
-        {
-            cout << "\n\n";
-        }
+        cout << endl;
         
         //Solve a problem that has been chosen
         switch (choice)
         {           
-            case 'A' : void markup();
-            case 'a' : void markup();
-            case 'B' : void winDvsn();
-            case 'b' : void winDvsn();
-            case 'C' : void sfsDrvg();
-            case 'c' : void sfsDrvg();
-            case 'D' : void flgDist();
-            case 'd' : void flgDist();
-            case 'E' : void kntcNrg();
-            case 'e' : void kntcNrg();
-            case 'F' : void tmp_tbl();
-            case 'f' : void tmp_tbl();
-            case 'G' : void cnToss();
-            case 'g' : void cnToss();
-            case 'H' : void prsntVl();
-            case 'h' : void prsntVl();
-            case 'I' : void vrHsptl();
-            case 'i' : void vrHsptl();
-            case 'J' : void rpsGame();
-            case 'j' : void rpsGame();         
+            case 'A' : case 'a' :
+                markup(); break;
+            /*case 'B' : case 'b' : 
+                winDvsn(); break;
+            case 'C' : case 'c' : 
+                sfsDrvg(); break;
+            case 'D' : case 'd' : 
+                flgDist(); break;
+            case 'E' : case 'e' : 
+                kntcNrg(); break;
+            case 'F' : case 'f' : 
+                tmp_tbl(); break;
+            case 'G' : case 'g' :
+                cnToss(); break;
+            case 'H' : case 'h' : 
+                prsntVl(); break;
+            case 'I' : case 'i' : 
+                vrHsptl(); break;
+            case 'J' : case 'j' : 
+                rpsGame(); break;
+            */default :
+                cout << "Thank you for using this program!" << endl;
+                return 0;
         };
         
        //Prompt for another solution
        cout << "\nWould you like to solve another problem? (Y/N) ";
        cin >> another;
+       cout << endl;
        
     //Condition for exiting the loop
     } while (another == 'Y' || another == 'y');
+    
+    //Exit with prompt
     if (another != 'Y' || another != 'y')
     {
-        cout << "\nGood-bye!" << endl;
+        cout << "Thank you for using this program!" << endl;
     }
     
     //Exit the program
@@ -118,5 +116,51 @@ int main()
 //********************************* Markup ***********************************//
 void markup()
 {
+    //Declare variables
+    float whslCst;      //Wholesale cost
+    float mrkPcnt;      //Markup percentage
+    float rtPrice;      //Retail Price
     
+    //Prompt user for input
+    cout << setw(30) << "* Markup *\n";
+    cout << setw(30) << "----------\n";
+    cout << "This program calculates an item's retail price." << endl;
+    cout << "Enter the wholesale cost: ";
+    cin >> whslCst;
+    while(whslCst < 0)
+    {
+        cout << "ERROR: Wholesale cost must be a nonnegative number.\n"
+                "Re-enter the wholesale cost: ";
+        cin >> whslCst;
+    }
+    cout << "Enter the markup percentage: ";
+    cin >> mrkPcnt;
+    while(mrkPcnt < 0)
+    {
+        cout << "ERROR: Markup percentage must be a nonnegative number.\n"
+                "Re-enter the markup percentage: ";
+        cin >> mrkPcnt;
+    }
+    
+    //Calculate
+    rtPrice = clctRtl(whslCst, mrkPcnt);
+    
+    //Output the results
+    cout << setprecision(2) << fixed;
+    cout << "\nThe retail price is: $" << rtPrice << endl;
 }
+
+//Markup function
+float clctRtl(float w, float m)
+{
+    //Declare variables
+    float temp, total;
+    
+    //Calculate
+    temp = m / CNVPCNT * w;
+    total = temp + w;
+    
+    //Output
+    return (total);
+}
+

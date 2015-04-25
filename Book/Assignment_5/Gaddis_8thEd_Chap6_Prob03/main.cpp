@@ -2,9 +2,9 @@
 //==========================================================================
 //Programmer: Uriel Salazar
 //==========================================================================
-//Created: Month 0, 0000, 00:00 _M
+//Created: April 25, 2015, 10:42 AM
 //==========================================================================
-//Purpose: 
+//Purpose: Winning Division
 //==========================================================================
 
 //System Libraries
@@ -29,7 +29,7 @@ int main()
     float nWest;
     float sWest;
     
-    //Output titlea
+    //Output title
     cout << setw(37) << "* Winning Division *\n";
     cout << setw(37) << "--------------------\n";
     cout << "This program calculates which division of a company had the"

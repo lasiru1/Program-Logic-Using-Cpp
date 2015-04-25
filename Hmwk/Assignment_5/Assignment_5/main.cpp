@@ -17,18 +17,19 @@ using namespace std;    //Input/Output Library under standard name space
 
 //Global Constants
 const float CNVPCNT = 100;              //Convert percentages
+const float G = 9.8;                    //Gravitational Constant
 
 //Function Prototypes
-void markup();                          //Markup
-void winDvsn();                         //Winning Division
-void sfsDrvg();                         //Safest Driving Area
-void flgDist();                         //Falling Distance
-void kntcNrg();                         //Kinetic Energy
-void tmp_tbl();                         //Celsius Temperature Table
-void cnToss();                          //Coin Toss
-void prsntVl();                         //Present Value
-void vrHsptl();                         //Overloaded Hospital
-void rpsGame();                         //Rock, Paper, Scissors Game
+void markup();          //Markup
+void winDvsn();         //Winning Division
+void sfsDrvg();         //Safest Driving Area
+void flgDist();         //Falling Distance
+void kntcNrg();         //Kinetic Energy
+void tmp_tbl();         //Celsius Temperature Table
+void cnToss();          //Coin Toss
+void prsntVl();         //Present Value
+void vrHsptl();         //Overloaded Hospital
+void rpsGame();         //Rock, Paper, Scissors Game
 
 //Execution begins
 int main()
@@ -49,16 +50,17 @@ int main()
         cout << "C. \"Safest Driving Area\"\n";
         cout << "D. \"Falling Distance\"\n";
         cout << "E. \"Kinetic Energy\"\n";
-        cout << "F. \"Celsius Temperature Table\"\n";
+      /*cout << "F. \"Celsius Temperature Table\"\n";
         cout << "G. \"Coin Toss\"\n";
         cout << "H. \"Present Value\"\n";
         cout << "I. \"Overloaded Hospital\"\n";
         cout << "J. \"Rock, Paper, Scissors Game\"\n";
-        cout << "\nEnter any other key to exit the program.\n\n";
+      */cout << "\nEnter any other key to exit the program.\n\n";
         
         //Prompt for input
         cout << "Which problem would you like to solve? ";
         cin >> choice;
+        cin.ignore();
         cout << endl;
         
         //Solve a problem that has been chosen
@@ -70,9 +72,9 @@ int main()
                 winDvsn(); break;
             case 'C' : case 'c' : 
                 sfsDrvg(); break;
-            /*case 'D' : case 'd' : 
+            case 'D' : case 'd' : 
                 flgDist(); break;
-            case 'E' : case 'e' : 
+            /*case 'E' : case 'e' : 
                 kntcNrg(); break;
             case 'F' : case 'f' : 
                 tmp_tbl(); break;
@@ -355,4 +357,51 @@ void fndLwst(int north, int south, int east, int west, int central)
         cout << "Safest Driving Area: Central Bay Area (" << central <<
                 " accidents last year)";
     }
+}
+
+//*************************** Falling Distance *******************************//
+//Function Prototypes
+float fDistnc(int);     //Falling distance function
+
+//Execution begins
+void flgDist()
+{
+    //Declare variables
+    int fTime;        //The amount of time falling in seconds
+    float tDistnc;    //Distance in meters
+    
+    //Display title
+    cout << setw(37) << "* Falling Distance *\n";
+    cout << setw(37) << "--------------------\n";
+    cout << "This program simulates the distance (meters) an object has\n"
+            "fallen after ten seconds.\n";
+    cout << "\nPress the Enter key to begin the simulation...";
+    cin.get();
+    cout << endl;
+    
+    //Loop the function 10 times
+    for(fTime = 1; fTime <= 10; fTime++)
+    {
+        tDistnc = fDistnc(fTime);
+        if(fTime == 1)
+        {
+            cout << fTime << " second: " << tDistnc << " meters" << endl;
+        }
+        else
+        {
+          cout << fTime << " seconds: " << tDistnc << " meters" << endl;  
+        }
+    }
+}
+
+float fDistnc(int fTime)
+{
+    //Declare variables
+    float total;
+    
+    //Calculate distance fallen
+    total = (0.5) * G * (fTime * fTime);
+    
+    //Return value to main
+    return(total);
 }

@@ -19,7 +19,6 @@ const float CNVPCNT = 100;              //Convert percentages
 
 //Function Prototypes
 void markup();                          //Markup
-float clctRtl(float w, float m);        //Markup function
 void winDvsn();                         //Winning Division
 void sfsDrvg();                         //Safest Driving Area
 void flgDist();                         //Falling Distance
@@ -30,8 +29,7 @@ void prsntVl();                         //Present Value
 void vrHsptl();                         //Overloaded Hospital
 void rpsGame();                         //Rock, Paper, Scissors Game
 
-
-//Execution Begins
+//Execution begins
 int main()
 {
     //Declare menu variable choice
@@ -67,9 +65,9 @@ int main()
         {           
             case 'A' : case 'a' :
                 markup(); break;
-            /*case 'B' : case 'b' : 
+            case 'B' : case 'b' : 
                 winDvsn(); break;
-            case 'C' : case 'c' : 
+            /*case 'C' : case 'c' : 
                 sfsDrvg(); break;
             case 'D' : case 'd' : 
                 flgDist(); break;
@@ -109,6 +107,10 @@ int main()
 }
 
 //********************************* Markup ***********************************//
+//Function Prototypes
+float clctRtl(float w, float m);        //Markup function
+
+//Execution begins
 void markup()
 {
     //Declare variables
@@ -159,3 +161,88 @@ float clctRtl(float w, float m)
     return (total);
 }
 
+//*************************** Winning Division *******************************//
+//Function Prototypes
+float gtSales(string);                          //Get Sales
+void highest(float, float, float, float);       //Find Highest
+
+//Execution begins
+void winDvsn()
+{
+    //Declare Variables
+    float nEast;
+    float sEast;
+    float nWest;
+    float sWest;
+    
+    //Output titlea
+    cout << setw(37) << "* Winning Division *\n";
+    cout << setw(37) << "--------------------\n";
+    cout << "This program calculates which division of a company had the"
+            "\ngreatest sales this quarter.\n";
+
+    //Obtain Sales for each division
+    for(int i = 1; i <= 4; i++)
+    {
+        switch(i)
+        {
+            case 1:
+               nEast = gtSales("Northeast");
+               break;
+            case 2:
+               sEast = gtSales("Southeast");
+               break;
+            case 3:
+               nWest = gtSales("Northwest");
+               break;
+            case 4:
+               sWest = gtSales("Southwest");
+               break;
+        }  
+    }
+    highest(nEast, sEast, nWest, sWest);
+}
+
+float gtSales(string name)
+{
+    //Declare variables
+    float sales;
+    
+    //Prompt user for input
+    cout << "Enter the " << name << " division's total sales this quarter: ";
+    cin >> sales;
+    
+    //Validate Input
+    while(sales < 0)
+    {
+        cout << "\nERROR: Total sales must be a nonnegative number.\n"
+                "Re-enter the total sales: ";
+        cin >> sales;
+    }   
+    
+    //Return the value
+    return (sales);
+}
+
+void highest(float nEast, float sEast, float nWest, float sWest)
+{   
+    //Find the division with the highest sales
+    cout << endl;
+    cout << setprecision(2) << fixed;
+    if(nEast > sEast && nEast > nWest && nEast > sWest)
+    {
+        cout << "Northeast Division: $" << nEast << endl;
+    }
+    else if(sEast > nEast && sEast > nWest && sEast > sWest)
+    {
+        cout << "Southeast Division: $" << sEast; 
+    }
+    else if(nWest > nEast && nWest > sEast && nWest > sWest)
+    {
+        cout << "Northwest Division: $" << sEast; 
+    }
+    else
+    {
+        cout << "Southwest Division: $" << sWest; 
+    }
+}

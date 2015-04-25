@@ -200,6 +200,7 @@ void winDvsn()
                break;
         }  
     }
+    //Function Call "Find Highest"
     highest(nEast, sEast, nWest, sWest);
 }
 

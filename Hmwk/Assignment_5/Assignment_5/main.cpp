@@ -74,9 +74,9 @@ int main()
                 sfsDrvg(); break;
             case 'D' : case 'd' : 
                 flgDist(); break;
-            /*case 'E' : case 'e' : 
+            case 'E' : case 'e' : 
                 kntcNrg(); break;
-            case 'F' : case 'f' : 
+          /*case 'F' : case 'f' : 
                 tmp_tbl(); break;
             case 'G' : case 'g' :
                 cnToss(); break;
@@ -403,5 +403,47 @@ float fDistnc(int fTime)
     total = (0.5) * G * (fTime * fTime);
     
     //Return value to main
+    return(total);
+}
+
+//***************************** Kinetic Energy *******************************//
+//Function Prototypes
+float kEnergy(float, float);    //Kinetic Energy Function
+
+//Execution begins
+void kntcNrg()
+{
+    //Declare variables
+    float mass;         //Mass in kilograms
+    float vlcty;        //Velocity in meters per second
+    float kinNrgy;      //Kinetic energy in newtons
+
+    //Prompt the user for input
+    cout << setw(36) << "* Kinetic Energy *\n";
+    cout << setw(36) << "------------------\n";
+    cout << "This program calculates a moving object's kinetic energy.\n\n";
+    cout << "Enter the mass of the object in kilograms: ";
+    cin >> mass;
+    cout << "Enter the velocity of the object in meters per second: ";
+    cin >> vlcty;
+    cout << endl;
+    
+    //Call the kinetic energy function
+    kinNrgy = kEnergy(mass, vlcty);
+    
+    //Output the results
+    cout << "The total kinetic energy of the object is: " << kinNrgy <<
+            " newtons" << endl;
+}
+
+float kEnergy(float mass, float vlcty)
+{
+    //Declare variables
+    float total;
+    
+    //Calculate
+    total = (0.5) * mass * (vlcty * vlcty);
+    
+    //Return the value
     return(total);
 }

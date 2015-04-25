@@ -96,7 +96,7 @@ void highest(float nEast, float sEast, float nWest, float sWest)
     }
     else if(nWest > nEast && nWest > sEast && nWest > sWest)
     {
-        cout << "Northwest Division: $" << sEast; 
+        cout << "Northwest Division: $" << nWest; 
     }
     else
     {

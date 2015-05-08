@@ -20,6 +20,10 @@ using namespace std;    //Input/Output Library under standard name space
 
 //Function Prototypes
 int int_chk(int);           //Function to validate input is a positive integer
+void onePlyr();             //One player version (AI version)
+void twoPlyr();             //Two player version
+void trePlyr();             //Three player version
+void forPlyr();             //Four player version
 
 //Execution begins
 int main()
@@ -30,6 +34,7 @@ int main()
     //Declare variables
     int card = 0;       //Card drawn
     int choice;         //Which option the user wants after they draw a card
+    int nPlyrs;         //Number of players (1 - 4)
     
     //Output game board
     cout << " _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n"
@@ -51,10 +56,37 @@ int main()
             "|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|\n";
     
     //Prompt user for input
-    cout << "\nPress the enter key to draw a card!" << endl;
+    cout << "\nPlease enter the number of players: ";
+    cin >> nPlyrs;
+    cin.ignore();
+    
+    if(nPlyrs == 1)
+    {
+        cout << "AI version" << endl;
+    }
+    else if(nPlyrs == 2)
+    {
+        cout << "2 player version" << endl;
+    }
+    else if(nPlyrs == 3)
+    {
+        cout << "3 player version" << endl;
+    }
+    else if(nPlyrs == 4)
+    {
+        cout << "4 player version" << endl;
+    }
+    else
+    {
+        cout << "\nThis game can only be played with 1 - 4 players" << endl;
+        return 0;
+    }
+    
+    //Begin the game
+    cout << "\nPress the enter key to draw a card! ";
     cin.get();
     
-    //Draw a random card
+    //generate a random card
     card = (rand() % 11) + 1;
     cout << card;
     cout << endl;
@@ -82,17 +114,16 @@ int main()
     return 0;
 }
 
-int int_chk(int choice)
+int int_chk(int number)
 {
     //Check for input
-    while(!(cin >> choice) || choice < 0)
+    while(!(cin >> number) || number < 0)
     {
         cout << "ERROR: Choice in not a positive integer\n"
-                "Re-enter your choice: " << endl;
-        cin >> choice;
+                "Re-enter your choice: ";
         cin.clear();
         cin.ignore(1e9, '\n');
     }
     //Return choice after it has been validated
-    return(choice); 
+    return(number); 
 }

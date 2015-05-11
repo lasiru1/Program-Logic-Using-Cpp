@@ -18,6 +18,7 @@ using namespace std;    //Input/Output Library under standard name space
 //User Libraries
 
 //Global Constants
+const unsigned short TPOSTNS = 67;     //Total number of positions for any player (66)
 
 //Function Prototypes
 int int_chk(int);           //Function to validate input is a positive integer
@@ -39,7 +40,7 @@ int main()
     unsigned short symbol, pSymbol;        //Player's symbol (*, #, &, @)
     unsigned short p1cPosn = 0;            //Player 1's current position on the game board
     unsigned short p2cPosn = 0;            //Player 2's current position on the game board
-    const unsigned short TPOSTNS = 67;     //Total number of positions for any player (66)
+    char another;                          //Variable for new game (Yes or No)
     string pOnePos[TPOSTNS] =
     {
             " _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n"
@@ -2443,524 +2444,571 @@ int main()
             "| |_ _ _ _ _ _ _ _ _ _ _ _| |_| |\n"
             "|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|\n";
     
-    //Prompt user for input
+    //Loop the program
     do
     {
-        //Prompt user for number of players
-        cout << "\nPlease enter the number of players: ";
-        nPlyrs = int_chk(plyrs);
-        cin.ignore();
-        
-        //Determine number of players
-        switch (nPlyrs)
-        {
-            case 1:
-                cout << "AI version" << endl;
-                break;
-            case 2:
-                cout << "2 player version" << endl;
-                break;
-            case 3:
-                cout << "3 player version" << endl;
-                break;
-            case 4:
-                cout << "4 player version" << endl;
-                break;
-            default:
-                cout << "\nThis game can only be played with 1 - 4 players" << endl;  
-        }        
-    } while(nPlyrs >= 5);       //End do-while loop
-    cout << endl;
-    
-    //Print players and their symbols
-    cout << "Player 1: * \t Player 2: #" << endl;
-    cout << "----------- \t -----------" << endl;
 
-    //Begin the game
-    cout << "\nPLAYER 1'S TURN:";
-    cout << "\nPress the enter key to draw a card! ";
-    cin.get();
-    
-    //generate a random card
-    card = (rand() % 11) + 1;
-    cout << endl;
-    
-    //Determine the card value and apply the rules
-    if(card == 1)
-    {
-        cout << "You drew a 1!" << endl;
-        cout << "1. Start" << endl;
-        cout << "2. Move 1 space forward" << endl;
-        cout << "3. Skip turn" << endl;
-        cout << "\nWhich choice would you like to make? " << endl;
-        pChoice = int_chk(choice);
-        
-        //Check for legal move
-        while(pChoice == 1)
+        //Prompt user for input
+        do
         {
-            if(p1cPosn >= 1)
-            cout << "That's an illegal move!\n";
-                    "Which choice would you like to make? ";
+            //Prompt user for number of players
+            cout << "\nPlease enter the number of players: ";
+            nPlyrs = int_chk(plyrs);
+            cin.ignore();
+
+            //Determine number of players
+            switch (nPlyrs)
+            {
+                case 1:
+                    cout << "AI version" << endl;
+                    break;
+                case 2:
+                    cout << "2 player version" << endl;
+                    break;
+                case 3:
+                    cout << "3 player version" << endl;
+                    break;
+                case 4:
+                    cout << "4 player version" << endl;
+                    break;
+                default:
+                    cout << "\nThis game can only be played with 1 - 4 players" << endl;  
+            }        
+        } while(nPlyrs >= 5);       //End do-while loop
+        cout << endl;
+
+        //Print players and their symbols
+        cout << "Player 1: * \t Player 2: #" << endl;
+        cout << "----------- \t -----------" << endl;
+
+        //Begin the game
+        cout << "\nPLAYER 1'S TURN:";
+        cout << "\nPress the enter key to draw a card! ";
+        cin.get();
+
+        //generate a random card
+        card = (rand() % 11) + 1;
+        cout << endl;
+
+        //Determine the card value and apply the rules
+        if(card == 1)
+        {
+            cout << "You drew a 1!" << endl;
+            cout << "1. Start" << endl;
+            cout << "2. Move 1 space forward" << endl;
+            cout << "3. Skip turn" << endl;
+            cout << "\nWhich choice would you like to make? " << endl;
             pChoice = int_chk(choice);
+
+            //Check for legal move
+            while(pChoice == 1)
+            {
+                if(p1cPosn >= 1)
+                cout << "That's an illegal move!\n";
+                        "Which choice would you like to make? ";
+                pChoice = int_chk(choice);
+            }
+            while(pChoice == 2)
+            {
+                if(p1cPosn < 1)
+                cout << "That's an illegal move!\n";
+                        "Which choice would you like to make? ";
+                pChoice = int_chk(choice);            
+            }
+            while(pChoice == 3)
+            {
+                cout << "That's an illegal move!\n";
+                        "Which choice would you like to make? ";
+                pChoice = int_chk(choice);            
+            }
+            switch(pChoice)
+            {
+                case 1: 
+                    p1cPosn = 1;
+                    cout << pOnePos[p1cPosn];
+                    break;
+                case 2:
+                    p1cPosn += 1;
+                    cout << pOnePos[p1cPosn];    //Output modified game board
+                    break;
+                case 3:
+                    cout << pOnePos[p1cPosn];    //Output modifies game board
+                    break;
+            }
         }
-        while(pChoice == 2)
+        else if(card == 2)
         {
-            if(p1cPosn < 1)
-            cout << "That's an illegal move!\n";
-                    "Which choice would you like to make? ";
-            pChoice = int_chk(choice);            
+            cout << "You drew a 2!" << endl;
+            cout << "1. Start" << endl;
+            cout << "2. Move 2 spaces forward" << endl;
+            cout << "3. Skip turn" << endl;
+            cout << "\nWhich choice would you like to make?" << endl;
+            pChoice = int_chk(choice);
+
+            switch(pChoice)
+            {
+                case 1:
+                    cout << " " << endl;    //Output modifies game board
+                case 2:
+                    cout << " " << endl;    //Output modified game board
+                case 3:
+                    cout << " " << endl;
+            }
+        }
+        else if(card == 3)
+        {
+            cout << "You drew a 3!" << endl;
+            cout << "1. Move 3 spaces forward" << endl;
+            cout << "2. Skip turn" << endl;
+            cout << "\nWhich choice would you like to make?" << endl;
+            pChoice = int_chk(choice);
+
+            switch(pChoice)
+            {
+                case 1:
+                    cout << " " << endl;    //Output modifies game board
+                case 2:
+                    cout << " " << endl;    //Output modified game board
+            } 
+        }
+        else if(card == 4)
+        {
+            cout << "You drew a 4!" << endl;
+            cout << "1. Move 4 spaces backward" << endl;
+            cout << "2. Skip turn" << endl;
+            cout << "\nWhich choice would you like to make?" << endl;
+            pChoice = int_chk(choice);
+
+            switch(pChoice)
+            {
+                case 1:
+                    cout << " " << endl;    //Output modifies game board
+                case 2:
+                    cout << " " << endl;    //Output modified game board
+            }
+        }
+        else if(card == 5)
+        {
+            cout << "You drew a 5!" << endl;
+            cout << "1. Move 5 spaces forward" << endl;
+            cout << "2. Skip turn" << endl;
+            cout << "\nWhich choice would you like to make?" << endl;
+            pChoice = int_chk(choice);
+
+            switch(pChoice)
+            {
+                case 1:
+                    cout << " " << endl;    //Output modifies game board
+                case 2:
+                    cout << " " << endl;    //Output modified game board
+            }
+        }
+        else if(card == 6)
+        {
+            cout << "You drew a 7!" << endl;
+            cout << "1. Move 7 spaces forward" << endl;
+            cout << "2. Split 7 spaces between pawns" << endl;
+            cout << "3. Skip turn" << endl;
+            cout << "\nWhich choice would you like to make?" << endl;
+            pChoice = int_chk(choice);
+
+            switch(pChoice)
+            {
+                case 1:
+                    cout << " " << endl;    //Output modifies game board
+                case 2:
+                    cout << " " << endl;    //Output modified game board
+                case 3:
+                    cout << " " << endl;
+            }
+        }
+        else if(card == 7)
+        {
+            cout << "You drew a 8!" << endl;
+            cout << "1. Move 8 spaces forward" << endl;
+            cout << "2. Skip turn" << endl;
+            cout << "\nWhich choice would you like to make?" << endl;
+            pChoice = int_chk(choice);
+
+            switch(pChoice)
+            {
+                case 1:
+                    cout << " " << endl;    //Output modifies game board
+                case 2:
+                    cout << " " << endl;    //Output modified game board
+                case 3:
+                    cout << " " << endl;
+            }
+        }
+        else if(card == 8)
+        {
+            cout << "You drew a 10!" << endl;
+            cout << "1. Move 10 spaces forward" << endl;
+            cout << "2. Move 1 space backward" << endl;
+            cout << "3. Skip turn" << endl;
+            cout << "\nWhich choice would you like to make?" << endl;
+            pChoice = int_chk(choice);
+
+            switch(pChoice)
+            {
+                case 1:
+                    cout << " " << endl;    //Output modifies game board
+                case 2:
+                    cout << " " << endl;    //Output modified game board
+                case 3:
+                    cout << " " << endl;
+            }
+        }
+        else if(card == 9)
+        {
+            cout << "You drew a 11!" << endl;
+            cout << "1. Move 11 spaces forward" << endl;
+            cout << "2. Switch places with an opposing pawn" << endl;
+            cout << "3. Skip turn" << endl;
+            cout << "\nWhich choice would you like to make?" << endl;
+            pChoice = int_chk(choice);
+
+            switch(pChoice)
+            {
+                case 1:
+                    cout << " " << endl;    //Output modifies game board
+                case 2:
+                    cout << " " << endl;    //Output modified game board
+                case 3:
+                    cout << " " << endl;
+            }
+        }
+        else if(card == 10)
+        {
+            cout << "You drew a 12!" << endl;
+            cout << "1. Move 12 spaces forward" << endl;
+            cout << "2. Skip turn" << endl;
+            cout << "\nWhich choice would you like to make?" << endl;
+            pChoice = int_chk(choice);
+
+            switch(pChoice)
+            {
+                case 1:
+                    cout << " " << endl;    //Output modifies game board
+                case 2:
+                    cout << " " << endl;    //Output modified game board
+            }
+        }
+        else
+        {
+            cout << "You drew a \"Sorry!\" Card!" << endl;
+            cout << "1. Move an opponent's pawn back to start" << endl;
+            cout << "2. Skip turn" << endl;
+            cout << "\nWhich choice would you like to make?" << endl;
+            pChoice = int_chk(choice);
+
+            switch(pChoice)
+            {
+                case 1:
+                    cout << " " << endl;    //Output modifies game board
+                case 2:
+                    cout << " " << endl;    //Output modified game board
+            }
         }
 
-        switch(pChoice)
+        //Simulate another player's turn
+        cout << "\nPLAYER 2'S TURN:";
+
+        //generate a random card
+        card = (rand() % 11) + 1;
+        cout << endl;
+
+        //Determine the card value and apply the rules
+        if(card == 1)
         {
-            case 1: 
-                p1cPosn = 1;
-                cout << pOnePos[p1cPosn];
-            case 2:
-                cout << " " << endl;    //Output modified game board
-            case 3:
-                cout << " " << endl;    //Output modifies game board
+            cout << "Player 2 drew a 1!" << endl;
+            if(p2cPosn >= 1)
+            {
+                pChoice == 2;
+            }
+            else
+            {
+                pChoice == 1;
+            }       
+            switch(pChoice)
+            {
+                case 1:
+                    cout << "Player 2 chose to start." << endl;
+                    p2cPosn = 1;
+                    cout << pTwoPos[p2cPosn] << endl;
+                    break;
+                case 2:
+                    cout << "Player 2 chose to move 1 space forward." << endl;    //Output modified game board
+                    p2cPosn += 1;
+                    cout << pTwoPos[p2cPosn] << endl;
+                    break;
+                case 3:
+                    cout << "Player 2 chose to skip their turn." << endl;    //Output modifies game board
+                    break;
+            }
         }
-    }
-    else if(card == 2)
-    {
-        cout << "You drew a 2!" << endl;
-        cout << "1. Start" << endl;
-        cout << "2. Move 2 spaces forward" << endl;
-        cout << "3. Skip turn" << endl;
-        cout << "\nWhich choice would you like to make?" << endl;
-        pChoice = int_chk(choice);
-        
-        switch(pChoice)
+        else if(card == 2)
         {
-            case 1:
-                cout << " " << endl;    //Output modifies game board
-            case 2:
-                cout << " " << endl;    //Output modified game board
-            case 3:
-                cout << " " << endl;
+            cout << "Player 2 drew a 2!" << endl;
+            if(p2cPosn >= 1)
+            {
+                pChoice == 2;
+            }
+            else
+            {
+                pChoice == 1;
+            }       
+            switch(pChoice)
+            {
+                case 1:
+                    cout << "Player 2 chose to start." << endl;
+                    p2cPosn = 1;
+                    cout << pTwoPos[p2cPosn] << endl;
+                    break;
+                case 2:
+                    cout << "Player 2 chose to move 2 spaces forward." << endl;    //Output modified game board
+                    p2cPosn += 2;
+                    cout << pTwoPos[p2cPosn] << endl;
+                    break;
+                case 3:
+                    cout << "Player 2 chose to skip their turn." << endl;    //Output modifies game board
+                    break;
+            }
         }
-    }
-    else if(card == 3)
-    {
-        cout << "You drew a 3!" << endl;
-        cout << "1. Move 3 spaces forward" << endl;
-        cout << "2. Skip turn" << endl;
-        cout << "\nWhich choice would you like to make?" << endl;
-        pChoice = int_chk(choice);
-        
-        switch(pChoice)
+        else if(card == 3)
         {
-            case 1:
-                cout << " " << endl;    //Output modifies game board
-            case 2:
-                cout << " " << endl;    //Output modified game board
-        } 
-    }
-    else if(card == 4)
-    {
-        cout << "You drew a 4!" << endl;
-        cout << "1. Move 4 spaces backward" << endl;
-        cout << "2. Skip turn" << endl;
-        cout << "\nWhich choice would you like to make?" << endl;
-        pChoice = int_chk(choice);
-        
-        switch(pChoice)
-        {
-            case 1:
-                cout << " " << endl;    //Output modifies game board
-            case 2:
-                cout << " " << endl;    //Output modified game board
+            cout << "Player 2 drew a 3!" << endl;
+            if(p2cPosn >= 1)
+            {
+                pChoice == 1;
+            }
+            else
+            {
+                pChoice == 2;
+            }        
+            switch(pChoice)
+            {
+                case 1:
+                    cout << "Player 2 chose to move 3 spaces forward." << endl;
+                    p2cPosn += 3;
+                    cout << pTwoPos[p2cPosn] << endl;
+                    break;
+                case 2:
+                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    break;
+            } 
         }
-    }
-    else if(card == 5)
-    {
-        cout << "You drew a 5!" << endl;
-        cout << "1. Move 5 spaces forward" << endl;
-        cout << "2. Skip turn" << endl;
-        cout << "\nWhich choice would you like to make?" << endl;
-        pChoice = int_chk(choice);
-        
-        switch(pChoice)
+        else if(card == 4)
         {
-            case 1:
-                cout << " " << endl;    //Output modifies game board
-            case 2:
-                cout << " " << endl;    //Output modified game board
+            cout << "Player 2 drew a 4!" << endl;
+            if(p2cPosn >= 1)
+            {
+                pChoice == 1;
+            }
+            else
+            {
+                pChoice == 2;
+            }        
+            switch(pChoice)
+            {
+                case 1:
+                    cout << "Player 2 chose to move 4 spaces backward." << endl;
+                    p2cPosn -= 4;
+                    cout << pTwoPos[p2cPosn] << endl;
+                    break;
+                case 2:
+                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    break;
+            } 
         }
-    }
-    else if(card == 6)
-    {
-        cout << "You drew a 7!" << endl;
-        cout << "1. Move 7 spaces forward" << endl;
-        cout << "2. Split 7 spaces between pawns" << endl;
-        cout << "3. Skip turn" << endl;
-        cout << "\nWhich choice would you like to make?" << endl;
-        pChoice = int_chk(choice);
-        
-        switch(pChoice)
+        else if(card == 5)
         {
-            case 1:
-                cout << " " << endl;    //Output modifies game board
-            case 2:
-                cout << " " << endl;    //Output modified game board
-            case 3:
-                cout << " " << endl;
+            cout << "Player 2 drew a 5!" << endl;
+            if(p2cPosn >= 1)
+            {
+                pChoice == 1;
+            }
+            else
+            {
+                pChoice == 2;
+            }        
+            switch(pChoice)
+            {
+                case 1:
+                    cout << "Player 2 chose to move 5 spaces forward." << endl;
+                    p2cPosn += 5;
+                    cout << pTwoPos[p2cPosn] << endl;
+                    break;
+                case 2:
+                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    break;
+            } 
         }
-    }
-    else if(card == 7)
-    {
-        cout << "You drew a 8!" << endl;
-        cout << "1. Move 8 spaces forward" << endl;
-        cout << "2. Skip turn" << endl;
-        cout << "\nWhich choice would you like to make?" << endl;
-        pChoice = int_chk(choice);
-        
-        switch(pChoice)
+        else if(card == 6)
         {
-            case 1:
-                cout << " " << endl;    //Output modifies game board
-            case 2:
-                cout << " " << endl;    //Output modified game board
-            case 3:
-                cout << " " << endl;
+            cout << "Player 2 drew a 7!" << endl;
+            if(p2cPosn >= 1)
+            {
+                pChoice == 1;
+            }
+            else
+            {
+                pChoice == 2;
+            }         
+            switch(pChoice)
+            {
+                case 1:
+                    cout << "Player 2 chose to move 7 spaces forward." << endl;
+                    p2cPosn += 7;
+                    cout << pTwoPos[p2cPosn] << endl;
+                    break;
+                case 2:
+                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    break;
+            } 
         }
-    }
-    else if(card == 8)
-    {
-        cout << "You drew a 10!" << endl;
-        cout << "1. Move 10 spaces forward" << endl;
-        cout << "2. Move 1 space backward" << endl;
-        cout << "3. Skip turn" << endl;
-        cout << "\nWhich choice would you like to make?" << endl;
-        pChoice = int_chk(choice);
-        
-        switch(pChoice)
+        else if(card == 7)
         {
-            case 1:
-                cout << " " << endl;    //Output modifies game board
-            case 2:
-                cout << " " << endl;    //Output modified game board
-            case 3:
-                cout << " " << endl;
+            cout << "Player 2 drew an 8!" << endl;
+            if(p2cPosn >= 1)
+            {
+                pChoice == 1;
+            }
+            else
+            {
+                pChoice == 2;
+            }       
+            switch(pChoice)
+            {
+                case 1:
+                    cout << "Player 2 chose to move 8 spaces forward." << endl;
+                    p2cPosn += 8;
+                    cout << pTwoPos[p2cPosn] << endl;
+                    break;
+                case 2:
+                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    break;
+            } 
         }
-    }
-    else if(card == 9)
-    {
-        cout << "You drew a 11!" << endl;
-        cout << "1. Move 11 spaces forward" << endl;
-        cout << "2. Switch places with an opposing pawn" << endl;
-        cout << "3. Skip turn" << endl;
-        cout << "\nWhich choice would you like to make?" << endl;
-        pChoice = int_chk(choice);
-        
-        switch(pChoice)
+        else if(card == 8)
         {
-            case 1:
-                cout << " " << endl;    //Output modifies game board
-            case 2:
-                cout << " " << endl;    //Output modified game board
-            case 3:
-                cout << " " << endl;
+            cout << "Player 2 drew a 10!" << endl;
+            if(p2cPosn == 1)
+            {
+                pChoice == 2;
+            }
+            else if(p2cPosn >= 2)
+            {
+                pChoice == 1;
+            }
+            else
+            {
+                pChoice == 3;
+            }
+
+            switch(pChoice)
+            {
+                case 1:
+                    cout << "Player 2 chose to move 10 spaces forward." << endl;
+                    p2cPosn += 10;
+                    cout << pTwoPos[p2cPosn] << endl;
+                    break;
+                case 2:
+                    cout << "Player 2 chose to move 1 space backwards." << endl;
+                    p2cPosn -= 1;
+                    cout << pTwoPos[p2cPosn];
+                    break;
+                case 3:
+                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    break;
+            } 
         }
-    }
-    else if(card == 10)
-    {
-        cout << "You drew a 12!" << endl;
-        cout << "1. Move 12 spaces forward" << endl;
-        cout << "2. Skip turn" << endl;
-        cout << "\nWhich choice would you like to make?" << endl;
-        pChoice = int_chk(choice);
-        
-        switch(pChoice)
+        else if(card == 9)
         {
-            case 1:
-                cout << " " << endl;    //Output modifies game board
-            case 2:
-                cout << " " << endl;    //Output modified game board
+            cout << "Player 2 drew an 11!" << endl;
+            if(p2cPosn >= 1 && p2cPosn < p1cPosn)
+            {
+                pChoice == 2;
+            }
+            else if(p2cPosn >= 1)
+            {
+                pChoice == 1;
+            }
+            else
+            {
+                pChoice == 3;
+            }
+
+            switch(pChoice)
+            {
+                case 1:
+                    cout << "Player 2 chose to move 11 spaces forwards." << endl;
+                    p2cPosn += 11;
+                    cout << pTwoPos[p2cPosn];
+                    break;
+                case 2:              
+                    cout << "Player 2 chose to switch places with Player 1." << endl;
+                    p2cPosn = p1cPosn;
+                    cout << pTwoPos[p2cPosn] << endl;
+                    break;
+                case 3:
+                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    break;
+            } 
         }
-    }
-    else
-    {
-        cout << "You drew a \"Sorry!\" Card!" << endl;
-        cout << "1. Move an opponent's pawn back to start" << endl;
-        cout << "2. Skip turn" << endl;
-        cout << "\nWhich choice would you like to make?" << endl;
-        pChoice = int_chk(choice);
-        
-        switch(pChoice)
+        else if(card == 10)
         {
-            case 1:
-                cout << " " << endl;    //Output modifies game board
-            case 2:
-                cout << " " << endl;    //Output modified game board
-        }
-    }
-    
-    cout << "\nPLAYER 2'S TURN:";
-    
-    //generate a random card
-    card = (rand() % 11) + 1;
-    cout << endl;
-    
-    //Determine the card value and apply the rules
-    if(card == 1)
-    {
-        cout << "Player 2 drew a 1!" << endl;
-        if(p2cPosn >= 1)
-        {
-            pChoice == 2;
-        }
-        else
-        {
-            pChoice == 1;
-        }       
-        switch(pChoice)
-        {
-            case 1:
-                cout << "Player 2 chose to start." << endl;
-                p2cPosn = 1;
-                cout << pTwoPos[p2cPosn] << endl;
-            case 2:
-                cout << "Player 2 chose to move 1 space forward." << endl;    //Output modified game board
-                p2cPosn += 1;
-                cout << pTwoPos[p2cPosn] << endl;
-            case 3:
-                cout << "Player 2 chose to skip their turn." << endl;    //Output modifies game board
-        }
-    }
-    else if(card == 2)
-    {
-        cout << "Player 2 drew a 2!" << endl;
-        if(p2cPosn >= 1)
-        {
-            pChoice == 2;
-        }
-        else
-        {
-            pChoice == 1;
-        }       
-        switch(pChoice)
-        {
-            case 1:
-                cout << "Player 2 chose to start." << endl;
-                p2cPosn = 1;
-                cout << pTwoPos[p2cPosn] << endl;
-            case 2:
-                cout << "Player 2 chose to move 2 spaces forward." << endl;    //Output modified game board
-                p2cPosn += 2;
-                cout << pTwoPos[p2cPosn] << endl;
-            case 3:
-                cout << "Player 2 chose to skip their turn." << endl;    //Output modifies game board
-        }
-    }
-    else if(card == 3)
-    {
-        cout << "Player 2 drew a 3!" << endl;
-        if(p2cPosn >= 1)
-        {
-            pChoice == 1;
-        }
-        else
-        {
-            pChoice == 2;
-        }        
-        switch(pChoice)
-        {
-            case 1:
-                cout << "Player 2 chose to move 3 spaces forward." << endl;
-                p2cPosn += 3;
-                cout << pTwoPos[p2cPosn] << endl;
-            case 2:
-                cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
-        } 
-    }
-    else if(card == 4)
-    {
-        cout << "Player 2 drew a 4!" << endl;
-        if(p2cPosn >= 1)
-        {
-            pChoice == 1;
+            cout << "Player 2 drew a 12!" << endl;
+            if(p2cPosn >= 1)
+            {
+                pChoice == 1;
+            }
+            else
+            {
+                pChoice == 2;
+            }       
+            switch(pChoice)
+            {
+                case 1:
+                    cout << "Player 2 chose to move 12 spaces forward." << endl;
+                    p2cPosn += 12;
+                    cout << pTwoPos[p2cPosn] << endl;
+                    break;
+                case 2:
+                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    break;
+            } 
         }
         else
         {
-            pChoice == 2;
-        }        
-        switch(pChoice)
-        {
-            case 1:
-                cout << "Player 2 chose to move 4 spaces backward." << endl;
-                p2cPosn -= 4;
-                cout << pTwoPos[p2cPosn] << endl;
-            case 2:
-                cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
-        } 
-    }
-    else if(card == 5)
-    {
-        cout << "Player 2 drew a 5!" << endl;
-        if(p2cPosn >= 1)
-        {
-            pChoice == 1;
-        }
-        else
-        {
-            pChoice == 2;
-        }        
-        switch(pChoice)
-        {
-            case 1:
-                cout << "Player 2 chose to move 5 spaces forward." << endl;
-                p2cPosn += 5;
-                cout << pTwoPos[p2cPosn] << endl;
-            case 2:
-                cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
-        } 
-    }
-    else if(card == 6)
-    {
-        cout << "Player 2 drew a 7!" << endl;
-        if(p2cPosn >= 1)
-        {
-            pChoice == 1;
-        }
-        else
-        {
-            pChoice == 2;
-        }         
-        switch(pChoice)
-        {
-            case 1:
-                cout << "Player 2 chose to move 7 spaces forward." << endl;
-                p2cPosn += 7;
-                cout << pTwoPos[p2cPosn] << endl;
-            case 2:
-                cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
-        } 
-    }
-    else if(card == 7)
-    {
-        cout << "Player 2 drew an 8!" << endl;
-        if(p2cPosn >= 1)
-        {
-            pChoice == 1;
-        }
-        else
-        {
-            pChoice == 2;
-        }       
-        switch(pChoice)
-        {
-            case 1:
-                cout << "Player 2 chose to move 8 spaces forward." << endl;
-                p2cPosn += 8;
-                cout << pTwoPos[p2cPosn] << endl;
-            case 2:
-                cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
-        } 
-    }
-    else if(card == 8)
-    {
-        cout << "Player 2 drew a 10!" << endl;
-        if(p2cPosn == 1)
-        {
-            pChoice == 2;
-        }
-        else if(p2cPosn >= 2)
-        {
-            pChoice == 1;
-        }
-        else
-        {
-            pChoice == 3;
+            cout << "Player 2 drew a \"Sorry!\" card!" << endl;
+            if(p1cPosn >= 1)
+            {
+                pChoice == 1;
+            }
+            else
+            {
+                pChoice == 2;
+            }       
+            switch(pChoice)
+            {
+                case 1:
+                    cout << "Player 2 chose to move Player 1 back to start!" << endl;
+                    p1cPosn = 0;
+                    cout << pOnePos[p1cPosn] << endl;
+                    break;
+                case 2:
+                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    break;
+            } 
         }
         
-        switch(pChoice)
-        {
-            case 1:
-                cout << "Player 2 chose to move 10 spaces forward." << endl;
-                p2cPosn += 10;
-                cout << pTwoPos[p2cPosn] << endl;
-            case 2:
-                cout << "Player 2 chose to move 1 space backwards." << endl;
-                p2cPosn -= 1;
-                cout << pTwoPos[p2cPosn];
-            case 3:
-                cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
-        } 
-    }
-    else if(card == 9)
-    {
-        cout << "Player 2 drew an 11!" << endl;
-        if(p2cPosn >= 1 && p2cPosn < p1cPosn)
-        {
-            pChoice == 2;
-        }
-        else if(p2cPosn >= 1)
-        {
-            pChoice == 1;
-        }
-        else
-        {
-            pChoice == 3;
-        }
+        //Prompt the user if they would like to play again
+        cout << "\nWould you like to play another game? (Y/N) ";
+        cin >> another;
         
-        switch(pChoice)
-        {
-            case 1:
-                cout << "Player 2 chose to move 11 spaces forwards." << endl;
-                p2cPosn += 11;
-                cout << pTwoPos[p2cPosn];
-            case 2:              
-                cout << "Player 2 chose to switch places with Player 1." << endl;
-                p2cPosn = p1cPosn;
-                cout << pTwoPos[p2cPosn] << endl;
-            case 3:
-                cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
-        } 
-    }
-    else if(card == 10)
-    {
-        cout << "Player 2 drew a 12!" << endl;
-        if(p2cPosn >= 1)
-        {
-            pChoice == 1;
-        }
-        else
-        {
-            pChoice == 2;
-        }       
-        switch(pChoice)
-        {
-            case 1:
-                cout << "Player 2 chose to move 12 spaces forward." << endl;
-                p2cPosn += 12;
-                cout << pTwoPos[p2cPosn] << endl;
-            case 2:
-                cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
-        } 
-    }
-    else
-    {
-        cout << "Player 2 drew a \"Sorry!\" card!" << endl;
-        if(p1cPosn >= 1)
-        {
-            pChoice == 1;
-        }
-        else
-        {
-            pChoice == 2;
-        }       
-        switch(pChoice)
-        {
-            case 1:
-                cout << "Player 2 chose to move Player 1 back to start!" << endl;
-                p1cPosn = 0;
-                cout << pOnePos[p1cPosn] << endl;
-            case 2:
-                cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
-        } 
-    }
+    //Exit or repeat the do-while loop    
+    } while(another == 'Y' || another == 'y');
    
     //Exit the program
     return 0;
@@ -2972,7 +3020,7 @@ int int_chk(int number)
     //Check for input
     while(!(cin >> number) || number < 0)
     {
-        cout << "ERROR: Invalid Input.\n"
+        cout << "ERROR: Invalid Input\n"
                 "Please input a nonnegative integer: ";
         cin.clear();
         cin.ignore(1e9, '\n');

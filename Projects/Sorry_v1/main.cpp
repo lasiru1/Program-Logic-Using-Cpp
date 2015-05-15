@@ -40,6 +40,7 @@ int main()
     unsigned short symbol, pSymbol;        //Player's symbol (*, #, &, @)
     unsigned short p1cPosn = 0;            //Player 1's current position on the game board
     unsigned short p2cPosn = 0;            //Player 2's current position on the game board
+    unsigned short temp = 0;                   //Hold a temporary value
     char another;                          //Variable for new game (Yes or No)
     string pOnePos[TPOSTNS] =              //All possible positions for player 1 (*)
     {
@@ -2769,10 +2770,9 @@ int main()
             "| |_ _ _ _ _ _ _ _ _ _ _ _| |_| |\n"
             "|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|\n";
     
-    //Loop the program
+    //Loop the entire game
     do
     {
-
         //Prompt user for input
         do
         {
@@ -2808,7 +2808,7 @@ int main()
 
         //Begin the game
         cout << "\nPLAYER 1'S TURN:";
-        cout << "\nPress the enter key to draw a card! ";
+        cout << "\nPress the Enter key to draw a card! ";
         cin.get();
 
         //generate a random card
@@ -2830,7 +2830,7 @@ int main()
             //Check for legal move
             while(pChoice == 1)
             {
-                if(p1cPosn >= 10)
+                if(p1cPosn >= 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -2839,7 +2839,7 @@ int main()
             }
             while(pChoice == 2)
             {
-                if(p1cPosn < 10)
+                if(p1cPosn < 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -2858,7 +2858,7 @@ int main()
             {
                 case 1: 
                     p1cPosn = 10;
-                    cout << pOnePos[p1cPosn];
+                    cout << pOnePos[p1cPosn];   //Output modified game board
                     break;
                 case 2:
                     p1cPosn += 1;
@@ -2883,7 +2883,7 @@ int main()
             //Check for legal move
             while(pChoice == 1)
             {
-                if(p1cPosn >= 10)
+                if(p1cPosn >= 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -2892,7 +2892,7 @@ int main()
             }
             while(pChoice == 2)
             {
-                if(p1cPosn < 10)
+                if(p1cPosn < 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -2911,11 +2911,11 @@ int main()
             {
                 case 1:
                     p1cPosn = 10;
-                    cout << pOnePos[p1cPosn];
+                    cout << pOnePos[p1cPosn];   //Output modified game board
                     break;
                 case 2:
                     p1cPosn += 2;
-                    cout << pOnePos[p1cPosn];    //Output modified game board
+                    cout << pOnePos[p1cPosn];   //Output modified game board
                     break;
                 case 3:
                     break;
@@ -2935,7 +2935,7 @@ int main()
             //Check for legal move
             while(pChoice == 1)
             {
-                if(p1cPosn < 10)
+                if(p1cPosn < 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -2944,7 +2944,7 @@ int main()
             }
             while(pChoice == 2)
             {
-                if(p1cPosn >= 10)
+                if(p1cPosn >= 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -2977,7 +2977,7 @@ int main()
             //Check for legal move
             while(pChoice == 1)
             {
-                if(p1cPosn < 10)
+                if(p1cPosn < 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -2986,7 +2986,7 @@ int main()
             }
             while(pChoice == 2)
             {
-                if(p1cPosn >= 10)
+                if(p1cPosn >= 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -2999,43 +2999,45 @@ int main()
             {
                 case 1:
                     p1cPosn -= 4;
+                    cout << pOnePos[p1cPosn];    //Output modified game board
+                    
+                    //Determine if Player 1 has moved before their safe zone (P1-0 - P1-8)
                     if(p1cPosn == 8)
                     {
-                        p1cPosn == 68;
+                        p1cPosn = 68;
                     }
                     else if(p1cPosn == 7)
                     {
-                        p1cPosn == 67;
+                        p1cPosn = 67;
                     }
                     else if(p1cPosn == 6)
                     {
-                        p1cPosn == 66;
+                        p1cPosn = 66;
                     }
                     else if(p1cPosn == 5)
                     {
-                        p1cPosn == 65;
+                        p1cPosn = 65;
                     }
                     else if(p1cPosn == 4)
                     {
-                        p1cPosn == 64;
+                        p1cPosn = 64;
                     }
                     else if(p1cPosn == 3)
                     {
-                        p1cPosn == 63;
+                        p1cPosn = 63;
                     }
                     else if(p1cPosn == 2)
                     {
-                        p1cPosn == 62;
+                        p1cPosn = 62;
                     }
                     else if(p1cPosn == 1)
                     {
-                        p1cPosn == 61;
+                        p1cPosn = 61;
                     }
                     else if(p1cPosn == 0)
                     {
-                        p1cPosn == 60;
-                    }
-                    cout << pOnePos[p1cPosn];    //Output modified game board
+                        p1cPosn = 60;
+                    }                   
                     break;
                 case 2:
                     break;
@@ -3055,7 +3057,7 @@ int main()
             //Check for legal move
             while(pChoice == 1)
             {
-                if(p1cPosn < 10)
+                if(p1cPosn < 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -3064,7 +3066,7 @@ int main()
             }
             while(pChoice == 2)
             {
-                if(p1cPosn >= 10)
+                if(p1cPosn >= 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -3098,7 +3100,7 @@ int main()
             //Check for legal move
             while(pChoice == 1)
             {
-                if(p1cPosn < 10)
+                if(p1cPosn < 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -3107,7 +3109,7 @@ int main()
             }
             while(pChoice == 2)
             {
-                if(p2cPosn < 10)
+                if(p2cPosn < 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -3116,7 +3118,7 @@ int main()
             }
             while(pChoice == 3)
             {
-                if(p1cPosn >= 10)
+                if(p1cPosn >= 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -3133,43 +3135,45 @@ int main()
                     break;
                 case 2:
                     p2cPosn -= 7;
+                    cout << pTwoPos[p2cPosn];    //Output modified game board
+                    
+                    //Determine if Player 2 has moved before their safe zone (P1-0 - P1-8)
                     if(p2cPosn == 8)
                     {
-                        p2cPosn == 68;
+                        p2cPosn = 68;
                     }
                     else if(p2cPosn == 7)
                     {
-                        p2cPosn == 67;
+                        p2cPosn = 67;
                     }
                     else if(p2cPosn == 6)
                     {
-                        p2cPosn == 66;
+                        p2cPosn = 66;
                     }
                     else if(p2cPosn == 5)
                     {
-                        p2cPosn == 65;
+                        p2cPosn = 65;
                     }
                     else if(p2cPosn == 4)
                     {
-                        p2cPosn == 64;
+                        p2cPosn = 64;
                     }
                     else if(p2cPosn == 3)
                     {
-                        p2cPosn == 63;
+                        p2cPosn = 63;
                     }
                     else if(p2cPosn == 2)
                     {
-                        p2cPosn == 62;
+                        p2cPosn = 62;
                     }
                     else if(p2cPosn == 1)
                     {
-                        p2cPosn == 61;
+                        p2cPosn = 61;
                     }
                     else if(p2cPosn == 0)
                     {
-                        p2cPosn == 60;
+                        p2cPosn = 60;
                     }
-                    cout << pTwoPos[p2cPosn];    //Output modified game board
                     break;
                 case 3:
                     break;
@@ -3189,7 +3193,7 @@ int main()
             //Check for legal move
             while(pChoice == 1)
             {
-                if(p1cPosn < 10)
+                if(p1cPosn < 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -3198,7 +3202,7 @@ int main()
             }
             while(pChoice == 2)
             {
-                if(p1cPosn >= 10)
+                if(p1cPosn >= 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -3232,7 +3236,7 @@ int main()
             //Check for legal move
             while(pChoice == 1)
             {
-                if(p1cPosn < 10)
+                if(p1cPosn < 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -3241,7 +3245,7 @@ int main()
             }
             while(pChoice == 2)
             {
-                if(p1cPosn < 10)
+                if(p1cPosn < 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -3250,7 +3254,7 @@ int main()
             }
             while(pChoice == 3)
             {
-                if(p1cPosn >= 10)
+                if(p1cPosn >= 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -3267,43 +3271,45 @@ int main()
                     break;
                 case 2:
                     p1cPosn -= 1;
+                    cout << pOnePos[p1cPosn];    //Output modified game board
+                    
+                    //Determine if Player 1 has moved before their safe zone (P1-0 - P1-8)
                     if(p1cPosn == 8)
                     {
-                        p1cPosn == 68;
+                        p1cPosn = 68;
                     }
                     else if(p1cPosn == 7)
                     {
-                        p1cPosn == 67;
+                        p1cPosn = 67;
                     }
                     else if(p1cPosn == 6)
                     {
-                        p1cPosn == 66;
+                        p1cPosn = 66;
                     }
                     else if(p1cPosn == 5)
                     {
-                        p1cPosn == 65;
+                        p1cPosn = 65;
                     }
                     else if(p1cPosn == 4)
                     {
-                        p1cPosn == 64;
+                        p1cPosn = 64;
                     }
                     else if(p1cPosn == 3)
                     {
-                        p1cPosn == 63;
+                        p1cPosn = 63;
                     }
                     else if(p1cPosn == 2)
                     {
-                        p1cPosn == 62;
+                        p1cPosn = 62;
                     }
                     else if(p1cPosn == 1)
                     {
-                        p1cPosn == 61;
+                        p1cPosn = 61;
                     }
                     else if(p1cPosn == 0)
                     {
-                        p1cPosn == 60;
+                        p1cPosn = 60;
                     }
-                    cout << pOnePos[p1cPosn];    //Output modified game board
                     break;
             }
         }
@@ -3322,7 +3328,7 @@ int main()
             //Check for legal move
             while(pChoice == 1)
             {
-                if(p1cPosn < 1)
+                if(p1cPosn < 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -3331,7 +3337,7 @@ int main()
             }
             while(pChoice == 2)
             {
-                if(p1cPosn < 1)
+                if(p1cPosn < 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -3340,7 +3346,7 @@ int main()
             }
             while(pChoice == 3)
             {
-                if(p1cPosn >= 1)
+                if(p1cPosn >= 9)
                 {
                     cout << "That's an illegal move!\n";
                             "Which choice would you like to make? ";
@@ -3357,6 +3363,109 @@ int main()
                     break;
                 case 2:
                     
+                    //Switch both players 1 & 2
+                    if(p1cPosn >= 15 && p2cPosn >= 15)
+                    {
+                        temp = p1cPosn;
+                        p1cPosn = p2cPosn - 15;
+                        p2cPosn = temp + 15;
+                    }
+                    else if(p1cPosn >= 15 && p2cPosn <= 15)
+                    {
+                        temp = p1cPosn;
+                        p1cPosn = 60 + p2cPosn - 15;
+                        p2cPosn = 15 - (60 - temp);
+                    }
+                    else if(p1cPosn <= 15 && p2cPosn <= 15)
+                    {
+                        temp = p1cPosn;
+                        p1cPosn = 60 + p2cPosn - 15;
+                        p2cPosn = temp + 15;
+                    }
+                    else if(p1cPosn <= 15 && p2cPosn >= 15)
+                    {
+                        p1cPosn = p2cPosn - 15;
+                        p2cPosn = p2cPosn - (p1cPosn - 10);
+                    }
+                    cout << pOnePos[p1cPosn] << endl;
+                    cout << endl;
+                    cout << pTwoPos[p2cPosn] << endl;
+                    
+                    //Determine if Player 1 has moved before their safe zone (P1-0 - P1-8)
+                    if(p1cPosn == 8)
+                    {
+                        p1cPosn = 68;
+                    }
+                    else if(p1cPosn == 7)
+                    {
+                        p1cPosn = 67;
+                    }
+                    else if(p1cPosn == 6)
+                    {
+                        p1cPosn = 66;
+                    }
+                    else if(p1cPosn == 5)
+                    {
+                        p1cPosn = 65;
+                    }
+                    else if(p1cPosn == 4)
+                    {
+                        p1cPosn = 64;
+                    }
+                    else if(p1cPosn == 3)
+                    {
+                        p1cPosn = 63;
+                    }
+                    else if(p1cPosn == 2)
+                    {
+                        p1cPosn = 62;
+                    }
+                    else if(p1cPosn == 1)
+                    {
+                        p1cPosn = 61;
+                    }
+                    else if(p1cPosn == 0)
+                    {
+                        p1cPosn = 60;
+                    }
+                    
+                    //Determine if Player 2 has moved before their safe zone (P2-0 - P2-8)
+                    if(p2cPosn == 8)
+                    {
+                        p2cPosn = 68;
+                    }
+                    else if(p2cPosn == 7)
+                    {
+                        p2cPosn = 67;
+                    }
+                    else if(p2cPosn == 6)
+                    {
+                        p2cPosn = 66;
+                    }
+                    else if(p2cPosn == 5)
+                    {
+                        p2cPosn = 65;
+                    }
+                    else if(p2cPosn == 4)
+                    {
+                        p2cPosn = 64;
+                    }
+                    else if(p2cPosn == 3)
+                    {
+                        p2cPosn = 63;
+                    }
+                    else if(p2cPosn == 2)
+                    {
+                        p2cPosn = 62;
+                    }
+                    else if(p2cPosn == 1)
+                    {
+                        p2cPosn = 61;
+                    }
+                    else if(p2cPosn == 0)
+                    {
+                        p2cPosn = 60;
+                    }
                     break;
                 case 3:
                     break;
@@ -3372,14 +3481,36 @@ int main()
             cout << "2. Skip turn" << endl;
             cout << "\nWhich choice would you like to make?" << endl;
             pChoice = int_chk(choice);
+            
+            //Check for legal move
+            while(pChoice == 1)
+            {
+                if(p1cPosn < 9)
+                {
+                    cout << "That's an illegal move!\n";
+                            "Which choice would you like to make? ";
+                    pChoice = int_chk(choice);
+                }
+            }
+            while(pChoice == 2)
+            {
+                if(p1cPosn >= 9)
+                {
+                    cout << "That's an illegal move!\n";
+                            "Which choice would you like to make? ";
+                    pChoice = int_chk(choice);
+                }
+            }
 
             //Execute the desired action
             switch(pChoice)
             {
                 case 1:
-                    cout << " " << endl;    //Output modifies game board
+                    p1cPosn += 12;
+                    cout << pOnePos[p1cPosn];    //Output modified game board
+                    break;
                 case 2:
-                    cout << " " << endl;    //Output modified game board
+                    break;
             }
         }
         
@@ -3388,309 +3519,567 @@ int main()
         {
             //Print the card's specific menu
             cout << "You drew a \"Sorry!\" Card!" << endl;
-            cout << "1. Move an opponent's pawn back to start" << endl;
+            cout << "1. Move an opponent's pawn off the game board!" << endl;
             cout << "2. Skip turn" << endl;
             cout << "\nWhich choice would you like to make?" << endl;
             pChoice = int_chk(choice);
+            
+            //Check for legal move
+            while(pChoice == 1)
+            {
+                if(p2cPosn < 9)
+                {
+                    cout << "That's an illegal move!\n";
+                            "Which choice would you like to make? ";
+                    pChoice = int_chk(choice);
+                }
+            }
+            while(pChoice == 2)
+            {
+                if(p2cPosn >= 9)
+                {
+                    cout << "That's an illegal move!\n";
+                            "Which choice would you like to make? ";
+                    pChoice = int_chk(choice);
+                }
+            }
 
             //Execute the desired action
             switch(pChoice)
             {
                 case 1:
-                    cout << " " << endl;    //Output modifies game board
+                    p2cPosn = 0;
+                    cout << "Player 2 has been moved off the game board!" << endl;
+                    cout << " _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n"
+                            "|  _   _ _ _ _ _ _ _ _ _ _ _ _  |\n"
+                            "| | | |              _ _ _ _ _| |\n"
+                            "| | | |           & |_ _ _ _ _  |\n"
+                            "| | | |                       | |\n"
+                            "| | | |                       | |\n"
+                            "| | |_|                       | |\n"
+                            "| |                           | |\n"
+                            "| |  *        SORRY!          | |\n"
+                            "| |                        @  | |\n"
+                            "| |                        _  | |\n"
+                            "| |                       | | | |\n"
+                            "| |                       | | | |\n"
+                            "| |_ _ _ _ _              | | | |\n"
+                            "|  _ _ _ _ _| #           | | | |\n"
+                            "| |_ _ _ _ _ _ _ _ _ _ _ _| |_| |\n"
+                            "|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|\n";
+                    break;
                 case 2:
-                    cout << " " << endl;    //Output modified game board
+                    break;
             }
         }
 
-        //Simulate another player's turn
+        //Simulate the AI (Player 2)
         cout << "\nPLAYER 2'S TURN:";
+        cout << "\nPress the Enter key to continue... ";
+        cin.get();
 
         //generate a random card
         card = (rand() % 11) + 1;
         cout << endl;
 
         //Determine the card value and apply the rules
+        //Player 2 draws a "1"
         if(card == 1)
         {
             cout << "Player 2 drew a 1!" << endl;
-            if(p2cPosn >= 1)
+            
+            //Check for legal move
+            if(p2cPosn >= 9)
             {
-                pChoice == 2;
+                pChoice = 2;
             }
             else
             {
-                pChoice == 1;
-            }       
+                pChoice = 1;
+            }
+            
+            //Execute the desired action
             switch(pChoice)
             {
                 case 1:
                     cout << "Player 2 chose to start." << endl;
-                    p2cPosn = 1;
-                    cout << pTwoPos[p2cPosn] << endl;
+                    p2cPosn = 10;
+                    cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
                     break;
                 case 2:
-                    cout << "Player 2 chose to move 1 space forward." << endl;    //Output modified game board
+                    cout << "Player 2 had to move 1 space forward." << endl;    
                     p2cPosn += 1;
-                    cout << pTwoPos[p2cPosn] << endl;
-                    break;
-                case 3:
-                    cout << "Player 2 chose to skip their turn." << endl;    //Output modifies game board
+                    cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
                     break;
             }
         }
+        
+        //Player 2 draws a "2"
         else if(card == 2)
         {
             cout << "Player 2 drew a 2!" << endl;
-            if(p2cPosn >= 1)
+            
+            //Check for legal move
+            if(p2cPosn >= 9)
             {
-                pChoice == 2;
+                pChoice = 2;
             }
             else
             {
-                pChoice == 1;
+                pChoice = 1;
             }       
+            
+            //Execute the desired action
             switch(pChoice)
             {
                 case 1:
                     cout << "Player 2 chose to start." << endl;
-                    p2cPosn = 1;
-                    cout << pTwoPos[p2cPosn] << endl;
+                    p2cPosn = 10;
+                    cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
                     break;
                 case 2:
-                    cout << "Player 2 chose to move 2 spaces forward." << endl;    //Output modified game board
+                    cout << "Player 2 had to move 2 spaces forward." << endl;
                     p2cPosn += 2;
-                    cout << pTwoPos[p2cPosn] << endl;
-                    break;
-                case 3:
-                    cout << "Player 2 chose to skip their turn." << endl;    //Output modifies game board
+                    cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
                     break;
             }
         }
+        
+        //Player 2 draws a "3"
         else if(card == 3)
         {
             cout << "Player 2 drew a 3!" << endl;
-            if(p2cPosn >= 1)
+            
+            //Check for legal move
+            if(p2cPosn >= 9)
             {
-                pChoice == 1;
+                pChoice = 1;
             }
             else
             {
-                pChoice == 2;
+                pChoice = 2;
             }        
+            
+            //Execute the desired action
             switch(pChoice)
             {
                 case 1:
                     cout << "Player 2 chose to move 3 spaces forward." << endl;
                     p2cPosn += 3;
-                    cout << pTwoPos[p2cPosn] << endl;
+                    cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
                     break;
                 case 2:
-                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    cout << "Player 2 had to skip their turn." << endl;
                     break;
             } 
         }
+        
+        //Player 2 draws a "4"
         else if(card == 4)
         {
             cout << "Player 2 drew a 4!" << endl;
-            if(p2cPosn >= 1)
+            
+            //Check for legal move
+            if(p2cPosn >= 9)
             {
-                pChoice == 1;
+                pChoice = 1;
             }
             else
             {
-                pChoice == 2;
+                pChoice = 2;
             }        
+            
+            //Execute the desired action
             switch(pChoice)
             {
                 case 1:
                     cout << "Player 2 chose to move 4 spaces backward." << endl;
                     p2cPosn -= 4;
-                    cout << pTwoPos[p2cPosn] << endl;
+                    cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
+                    
+                    //Determine if Player 2 has moved before their safe zone (P2-0 - P2-8)
+                    if(p2cPosn == 8)
+                    {
+                        p2cPosn = 68;
+                    }
+                    else if(p2cPosn == 7)
+                    {
+                        p2cPosn = 67;
+                    }
+                    else if(p2cPosn == 6)
+                    {
+                        p2cPosn = 66;
+                    }
+                    else if(p2cPosn == 5)
+                    {
+                        p2cPosn = 65;
+                    }
+                    else if(p2cPosn == 4)
+                    {
+                        p2cPosn = 64;
+                    }
+                    else if(p2cPosn == 3)
+                    {
+                        p2cPosn = 63;
+                    }
+                    else if(p2cPosn == 2)
+                    {
+                        p2cPosn = 62;
+                    }
+                    else if(p2cPosn == 1)
+                    {
+                        p2cPosn = 61;
+                    }
+                    else if(p2cPosn == 0)
+                    {
+                        p2cPosn = 60;
+                    }
                     break;
                 case 2:
-                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    cout << "Player 2 had to skip their turn." << endl;
                     break;
             } 
         }
+        
+        //Player 2 draws a "5"
         else if(card == 5)
         {
             cout << "Player 2 drew a 5!" << endl;
-            if(p2cPosn >= 1)
+            
+            //Check for legal move
+            if(p2cPosn >= 9)
             {
-                pChoice == 1;
+                pChoice = 1;
             }
             else
             {
-                pChoice == 2;
+                pChoice = 2;
             }        
+            
+            //Execute the desired action
             switch(pChoice)
             {
                 case 1:
                     cout << "Player 2 chose to move 5 spaces forward." << endl;
                     p2cPosn += 5;
-                    cout << pTwoPos[p2cPosn] << endl;
+                    cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
                     break;
                 case 2:
-                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    cout << "Player 2 had to skip their turn." << endl;
                     break;
             } 
         }
+        
+        //Player 2 draws a "7"
         else if(card == 6)
         {
             cout << "Player 2 drew a 7!" << endl;
-            if(p2cPosn >= 1)
+            
+            //Check for legal move
+            if(p1cPosn < (p2cPosn - 15))
             {
-                pChoice == 1;
+                pChoice = 1;
+            }
+            else if(p1cPosn > (p2cPosn - 15))
+            {
+                pChoice = 2;
             }
             else
             {
-                pChoice == 2;
+                pChoice = 3;
             }         
+            
+            //Execute the desired action
             switch(pChoice)
             {
                 case 1:
                     cout << "Player 2 chose to move 7 spaces forward." << endl;
                     p2cPosn += 7;
-                    cout << pTwoPos[p2cPosn] << endl;
+                    cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
                     break;
                 case 2:
-                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    cout << "Player 2 chose to move their opponent 7 spaces backward." << endl;
+                    p1cPosn -= 7;
+                    cout << pOnePos[p1cPosn] << endl;   //Output modified game board
+                    
+                    //Determine if Player 2 has moved before their safe zone (P2-0 - P2-8)
+                    if(p2cPosn == 8)
+                    {
+                        p2cPosn = 68;
+                    }
+                    else if(p2cPosn == 7)
+                    {
+                        p2cPosn = 67;
+                    }
+                    else if(p2cPosn == 6)
+                    {
+                        p2cPosn = 66;
+                    }
+                    else if(p2cPosn == 5)
+                    {
+                        p2cPosn = 65;
+                    }
+                    else if(p2cPosn == 4)
+                    {
+                        p2cPosn = 64;
+                    }
+                    else if(p2cPosn == 3)
+                    {
+                        p2cPosn = 63;
+                    }
+                    else if(p2cPosn == 2)
+                    {
+                        p2cPosn = 62;
+                    }
+                    else if(p2cPosn == 1)
+                    {
+                        p2cPosn = 61;
+                    }
+                    else if(p2cPosn == 0)
+                    {
+                        p2cPosn = 60;
+                    }  
+                    break;
+                case 3:
+                    cout << "Player 2 had to skip their turn." << endl;
                     break;
             } 
         }
+        
+        //Player 2 draws an "8"
         else if(card == 7)
         {
             cout << "Player 2 drew an 8!" << endl;
-            if(p2cPosn >= 1)
+            
+            //Check for legal move
+            if(p2cPosn >= 9)
             {
-                pChoice == 1;
+                pChoice = 1;
             }
             else
             {
-                pChoice == 2;
+                pChoice = 2;
             }       
+            
+            //Execute the desired action
             switch(pChoice)
             {
                 case 1:
                     cout << "Player 2 chose to move 8 spaces forward." << endl;
                     p2cPosn += 8;
-                    cout << pTwoPos[p2cPosn] << endl;
+                    cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
                     break;
                 case 2:
-                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    cout << "Player 2 had to skip their turn." << endl;
                     break;
             } 
         }
+        
+        //Player 2 draws a "10"
         else if(card == 8)
         {
             cout << "Player 2 drew a 10!" << endl;
-            if(p2cPosn == 1)
+            
+            //Check for legal move
+            if(p2cPosn < 9 ) 
             {
-                pChoice == 2;
-            }
-            else if(p2cPosn >= 2)
-            {
-                pChoice == 1;
+                pChoice = 3;
             }
             else
             {
-                pChoice == 3;
+                pChoice = (rand() % 11) + 1;
             }
 
+            //Execute the desired action
             switch(pChoice)
             {
                 case 1:
                     cout << "Player 2 chose to move 10 spaces forward." << endl;
                     p2cPosn += 10;
-                    cout << pTwoPos[p2cPosn] << endl;
+                    cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
                     break;
                 case 2:
                     cout << "Player 2 chose to move 1 space backwards." << endl;
                     p2cPosn -= 1;
-                    cout << pTwoPos[p2cPosn];
+                    cout << pTwoPos[p2cPosn];   //Output modified game board
+                    
+                    //Determine if Player 2 has moved before their safe zone (P2-0 - P2-8)
+                    if(p2cPosn == 8)
+                    {
+                        p2cPosn = 68;
+                    }
+                    else if(p2cPosn == 7)
+                    {
+                        p2cPosn = 67;
+                    }
+                    else if(p2cPosn == 6)
+                    {
+                        p2cPosn = 66;
+                    }
+                    else if(p2cPosn == 5)
+                    {
+                        p2cPosn = 65;
+                    }
+                    else if(p2cPosn == 4)
+                    {
+                        p2cPosn = 64;
+                    }
+                    else if(p2cPosn == 3)
+                    {
+                        p2cPosn = 63;
+                    }
+                    else if(p2cPosn == 2)
+                    {
+                        p2cPosn = 62;
+                    }
+                    else if(p2cPosn == 1)
+                    {
+                        p2cPosn = 61;
+                    }
+                    else if(p2cPosn == 0)
+                    {
+                        p2cPosn = 60;
+                    } 
                     break;
                 case 3:
-                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    cout << "Player 2 had to skip their turn." << endl;
                     break;
             } 
         }
+        
+        //Player 2 draws an "11"
         else if(card == 9)
         {
             cout << "Player 2 drew an 11!" << endl;
+            
+            //Check for legal move
             if(p2cPosn >= 1 && p2cPosn < p1cPosn)
             {
-                pChoice == 2;
+                pChoice = 2;
             }
-            else if(p2cPosn >= 1)
+            else if(p2cPosn >= 10)
             {
-                pChoice == 1;
+                pChoice = 1;
             }
             else
             {
-                pChoice == 3;
+                pChoice = 3;
             }
 
+            //Execute the desired action
             switch(pChoice)
             {
                 case 1:
                     cout << "Player 2 chose to move 11 spaces forwards." << endl;
                     p2cPosn += 11;
-                    cout << pTwoPos[p2cPosn];
+                    cout << pTwoPos[p2cPosn];   //Output modified game board
                     break;
                 case 2:              
                     cout << "Player 2 chose to switch places with Player 1." << endl;
-                    p2cPosn = p1cPosn;
-                    cout << pTwoPos[p2cPosn] << endl;
+                    if(p2cPosn >= 15 && p1cPosn >= 15)
+                    {
+                        temp = p2cPosn;
+                        p2cPosn = p1cPosn + 15;
+                        p1cPosn = temp - 15;
+                    }
+                    else if(p1cPosn >= 15 && p2cPosn <= 15)
+                    {
+                        temp = p2cPosn;
+                        p2cPosn = 15 - (60 - p1cPosn)
+                        p1cPosn = 60 + temp - 15;
+                    }
+                    else if(p1cPosn <= 15 && p2cPosn <= 15)
+                    {
+                        temp = p2cPosn;
+                        p1cPosn = p1cPosn + 15;
+                        p2cPosn = 60 - (15 - p2cPosn);
+                    }
+                    else if(p1cPosn <= 15 && p2cPosn >= 15)
+                    {
+                        temp = p2cPosn;
+                        p2cPosn = p1cPosn + 15;
+                        p1cPosn = 60 + (temp - 15);
+                    }
+                    cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
+                    cout << endl;
+                    cout << pOnePos[p1cPosn] << endl;   //Output modified game board
                     break;
                 case 3:
-                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    cout << "Player 2 had to skip their turn." << endl;
                     break;
             } 
         }
+        
+        //Player 2 draws a "12"
         else if(card == 10)
         {
             cout << "Player 2 drew a 12!" << endl;
-            if(p2cPosn >= 1)
+            
+            //Check for legal move
+            if(p2cPosn >= 10)
             {
-                pChoice == 1;
+                pChoice = 1;
             }
             else
             {
-                pChoice == 2;
+                pChoice = 2;
             }       
+            
+            //Execute the desired action
             switch(pChoice)
             {
                 case 1:
                     cout << "Player 2 chose to move 12 spaces forward." << endl;
                     p2cPosn += 12;
-                    cout << pTwoPos[p2cPosn] << endl;
+                    cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
                     break;
                 case 2:
-                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    cout << "Player 2 had to skip their turn." << endl;
                     break;
             } 
         }
+        
+        //Player 2 draws a "Sorry!" card
         else
         {
             cout << "Player 2 drew a \"Sorry!\" card!" << endl;
+            
+            //Check for legal move
             if(p1cPosn >= 1)
             {
-                pChoice == 1;
+                pChoice = 1;
             }
             else
             {
-                pChoice == 2;
+                pChoice = 2;
             }       
+            
+            //Execute the desired action
             switch(pChoice)
             {
                 case 1:
-                    cout << "Player 2 chose to move Player 1 back to start!" << endl;
                     p1cPosn = 0;
-                    cout << pOnePos[p1cPosn] << endl;
+                    cout << "Player 1 has been moved off the game board!" << endl;
+                    cout << " _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n"
+                            "|  _   _ _ _ _ _ _ _ _ _ _ _ _  |\n"
+                            "| | | |              _ _ _ _ _| |\n"
+                            "| | | |           & |_ _ _ _ _  |\n"
+                            "| | | |                       | |\n"
+                            "| | | |                       | |\n"
+                            "| | |_|                       | |\n"
+                            "| |                           | |\n"
+                            "| |  *        SORRY!          | |\n"
+                            "| |                        @  | |\n"
+                            "| |                        _  | |\n"
+                            "| |                       | | | |\n"
+                            "| |                       | | | |\n"
+                            "| |_ _ _ _ _              | | | |\n"
+                            "|  _ _ _ _ _| #           | | | |\n"
+                            "| |_ _ _ _ _ _ _ _ _ _ _ _| |_| |\n"
+                            "|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|\n";                   
                     break;
                 case 2:
-                    cout << "Player 2 chose to skip their turn." << endl;    //Output modified game board
+                    cout << "Player 2 had to skip their turn." << endl;
                     break;
             } 
         }
@@ -3703,6 +4092,7 @@ int main()
     } while(another == 'Y' || another == 'y');
    
     //Exit the program
+    cout << "Good-bye!" << endl;
     return 0;
 }
 

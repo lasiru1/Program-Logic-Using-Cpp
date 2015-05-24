@@ -10,6 +10,8 @@
 //System Libraries
 #include <iostream>     //Input/Output Library
 #include <iomanip>      //Parametric Library
+#include <ctime>        //Time Library
+#include <cstdlib>      //Utilites Library
 using namespace std;    //Input/Output Library under standard namespace
 
 //User Libraries
@@ -19,6 +21,7 @@ using namespace std;    //Input/Output Library under standard namespace
 //Function Prototypes
 void lrg_sml();
 void salsa();
+void lrgr_n();
 
 //Execution begins
 int main()
@@ -38,6 +41,7 @@ int main()
         //Output Menu
         cout << "A. \"Largest/Smallest Array Values\"" << endl;
         cout << "B. \"Salsa and Chips\"" << endl;
+        cout << "C. \"Larger than n\"" << endl;
         cout << "\nPress any other key to exit the program" << endl;
 
         //Prompt the user for input
@@ -53,6 +57,9 @@ int main()
                 break;
             case 'B' : case 'b' :
                 salsa();
+                break;
+            case 'C' : case 'c' :
+                lrgr_n();
                 break;
             default:
                 cout << "Thank you for using this program!" << endl;
@@ -314,4 +321,56 @@ int int_chk(int number)
     
     //Return validated input
     return(number);
+}
+/****************************** Larger Than "n" *******************************/
+//Global Constants
+const int SIZE = 10;
+
+//Function Prototypes
+void larger(int[], int, int);
+
+//Execution begins
+void lrgr_n()
+{   
+    //Set the random number seed
+    srand(time(0));
+       
+    //Declare variables
+    int n;
+    int temp;
+    int array[SIZE];
+    
+    //Output program title
+    cout << setw(20) << "Larger than \"n\"" << endl;
+    cout << setw(20) << "-----------------" << endl;
+    
+    //Fill the array
+    for(int i = 0; i < SIZE; i++)
+    {
+        temp = (rand() % 100) + 1;
+        array[i] = temp;
+    }
+    
+    //Prompt user for input
+    cout << "Please enter a number \"n\": ";
+    cin >> n;
+    cout << endl;
+    
+    //Write to the "larger" function
+    larger(array, SIZE, n);
+}
+
+//(larger function)
+void larger(int numbers[], int size, int n)
+{    
+    
+    //Cycle through the array to find numbers greater than "n"
+    cout << "Numbers larger than \"n\":" << endl;
+    for(int j = 0; j < size; j++)
+    {
+        if(numbers[j] > n)
+        {
+            cout << numbers[j] << endl;
+        }
+    }
 }

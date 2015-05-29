@@ -44,31 +44,15 @@ int main()
     unsigned short p2cPosn = 0;            //Player 2's current position on the game board
     unsigned short temp = 0;               //Hold a temporary value
     char another;                          //Variable for new game (Yes or No)
-    ifstream file1, file2;                 //.txt files containing Player 1 & Player 2 game boards
+    ifstream file1, file2;                 //text files containing Player 1 & Player 2 game boards
     string pOnePos[TPOSTNS];               //Array containing Player 1 game boards
     string pTwoPos[TPOSTNS];               //Array containing Player 2 game boards
-    size_t pos1 = 0, pos2;                 //Cursors
-    
-    //Load the text files
-    ifstream in("p1_brds.txt");
-    stringstream buffer;
-    buffer << in.rdbuf();
-    string test = buffer.str();
-    cout << test << endl << endl;
-    
-    //Read the text files into the arrays
-    for(int i = 0; i < TPOSTNS; i++)
-    {
-        pos2 = test.find(",", pos1);                    //Search for the "," (position 2 will be where the comma was found)
-        pOnePos[i] = test.substr(pos1, (pos2-pos1));    //Make a substring
-        cout << pOnePos[i] << endl;
-        cout << "pos1:" << pos1 << ", pos2:" << pos2 << endl;
-        pos1 = pos2 + 1;
-    }
-    
+    string p1Sstrg, p2Sstrg;               //Player 1 & 2 substrings
+    size_t pos1 = 0, pos2;                 //Cursors for creating substrings
+    stringstream buffer;                   //variable for the string stream buffer
         
-    //Output game board
-    cout << setw(24) << " CSC5 Project 1 " << endl;
+    //Output program title
+    cout << setw(24) << " CSC5 Project 2 " << endl;
     cout << setw(24) << "by Uriel Salazar" << endl;
     cout << setw(24) << "----------------" << endl;    
     cout << " _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n"
@@ -88,6 +72,32 @@ int main()
             "|  _ _ _ _ _| #           | | | |\n"
             "| |_ _ _ _ _ _ _ _ _ _ _ _| |_| |\n"
             "|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|\n";
+    
+    //Load the text file for player 1
+    ifstream in_p1("Player1_GameBoards.txt");
+    buffer << in_p1.rdbuf();
+    p1Sstrg = buffer.str();
+    
+    //Read the text file into the player 1 array
+    for(int i = 0; i < TPOSTNS; i++)
+    {
+        pos2 = p1Sstrg.find(",", pos1);                    //Search for the "," (position 2 will be where the comma was found)
+        pOnePos[i] = p1Sstrg.substr(pos1, (pos2-pos1));    //Make the substring
+        pos1 = pos2 + 1;
+    }
+    
+    //Load the text file for player 2
+    ifstream in_p2("Player2_GameBoards.txt");
+    buffer << in_p2.rdbuf();
+    p2Sstrg = buffer.str();
+    
+    //Read the text file into the player 2 array
+    for(int c = 0; c < TPOSTNS; c++)
+    {
+        pos2 = p2Sstrg.find(",", pos1);                     //Search for the "," (position 2 will be where the comma was found)
+        pTwoPos[c] = p2Sstrg.substr(pos1, (pos2-pos1));     //Make the substring
+        pos1 = pos2 + 1;
+    }
     
     //Loop the entire game
     do
@@ -165,11 +175,11 @@ int main()
                 {
                     case 1: 
                         p1cPosn = 10;
-                        cout << pOnePos[p1cPosn];   //Output modified game board
+                        cout << pOnePos[p1cPosn] << endl;   //Output modified game board
                         break;
                     case 2:
                         p1cPosn += 1;
-                        cout << pOnePos[p1cPosn];    //Output modified game board
+                        cout << pOnePos[p1cPosn] << endl;    //Output modified game board
                         break;
                     case 3:
                         break;
@@ -201,7 +211,7 @@ int main()
                 {
                     case 1:
                         p1cPosn = 10;
-                        cout << pOnePos[p1cPosn];   //Output modified game board
+                        cout << pOnePos[p1cPosn] << endl;   //Output modified game board
                         break;
                     case 2:
                         p1cPosn += 2;
@@ -209,7 +219,7 @@ int main()
                         {
                             p1cPosn = 74;
                         }
-                        cout << pOnePos[p1cPosn];   //Output modified game board
+                        cout << pOnePos[p1cPosn] << endl;   //Output modified game board
                         break;
                     case 3:
                         break;
@@ -244,7 +254,7 @@ int main()
                         {
                             p1cPosn = 74;
                         }
-                        cout << pOnePos[p1cPosn];    //Output modified game board
+                        cout << pOnePos[p1cPosn] << endl;    //Output modified game board
                         break;
                     case 2:
                         break;
@@ -274,8 +284,7 @@ int main()
                 switch(pChoice)
                 {
                     case 1:
-                        p1cPosn -= 4;
-                        cout << pOnePos[p1cPosn];    //Output modified game board
+                        p1cPosn -= 4;                       
 
                         //Determine if Player 1 has moved before their safe zone (P1-0 - P1-8)
                         if(p1cPosn == 8)
@@ -313,7 +322,8 @@ int main()
                         else if(p1cPosn == 0)
                         {
                             p1cPosn = 60;
-                        }                   
+                        }
+                        cout << pOnePos[p1cPosn] << endl;    //Output modified game board
                         break;
                     case 2:
                         break;
@@ -348,7 +358,7 @@ int main()
                         {
                             p1cPosn = 74;
                         }
-                        cout << pOnePos[p1cPosn];    //Output modified game board
+                        cout << pOnePos[p1cPosn] << endl;    //Output modified game board
                         break;
                     case 2:
                         break;
@@ -384,11 +394,10 @@ int main()
                         {
                             p1cPosn = 74;
                         }
-                        cout << pOnePos[p1cPosn];    //Output modified game board
+                        cout << pOnePos[p1cPosn] << endl;    //Output modified game board
                         break;
                     case 2:
-                        p2cPosn -= 7;
-                        cout << pTwoPos[p2cPosn];    //Output modified game board
+                        p2cPosn -= 7;                       
 
                         //Determine if Player 2 has moved before their safe zone (P1-0 - P1-8)
                         if(p2cPosn == 8)
@@ -427,6 +436,7 @@ int main()
                         {
                             p2cPosn = 60;
                         }
+                        cout << pTwoPos[p2cPosn] << endl;    //Output modified game board
                         break;
                     case 3:
                         break;
@@ -461,7 +471,7 @@ int main()
                         {
                             p1cPosn = 74;
                         }
-                        cout << pOnePos[p1cPosn];    //Output modified game board
+                        cout << pOnePos[p1cPosn] << endl;    //Output modified game board
                         break;
                     case 2:
                         break;
@@ -497,11 +507,10 @@ int main()
                         {
                             p1cPosn = 74;
                         }
-                        cout << pOnePos[p1cPosn];    //Output modified game board
+                        cout << pOnePos[p1cPosn] << endl;    //Output modified game board
                         break;
                     case 2:
-                        p1cPosn -= 1;
-                        cout << pOnePos[p1cPosn];    //Output modified game board
+                        p1cPosn -= 1;                        
 
                         //Determine if Player 1 has moved before their safe zone (P1-0 - P1-8)
                         if(p1cPosn == 8)
@@ -540,6 +549,7 @@ int main()
                         {
                             p1cPosn = 60;
                         }
+                        cout << pOnePos[p1cPosn] << endl;    //Output modified game board
                         break;
                     case 3:
                         break;
@@ -575,7 +585,7 @@ int main()
                         {
                             p1cPosn = 74;
                         }
-                        cout << pOnePos[p1cPosn];    //Output modified game board
+                        cout << pOnePos[p1cPosn] << endl;    //Output modified game board
                         break;
                     case 2:
                         if(p1cPosn >= 15 && p2cPosn >= 15)
@@ -600,10 +610,7 @@ int main()
                         {
                             p1cPosn = p2cPosn - 15;
                             p2cPosn = p2cPosn - (p1cPosn - 10);
-                        }
-                        cout << pOnePos[p1cPosn] << endl;
-                        cout << endl;
-                        cout << pTwoPos[p2cPosn] << endl;
+                        }                       
 
                         //Determine if Player 1 has moved before their safe zone (P1-0 - P1-8)
                         if(p1cPosn == 8)
@@ -680,6 +687,9 @@ int main()
                         {
                             p2cPosn = 60;
                         }
+                        cout << pOnePos[p1cPosn] << endl;
+                        cout << endl;
+                        cout << pTwoPos[p2cPosn] << endl;
                         break;
                     case 3:
                         break;
@@ -714,7 +724,7 @@ int main()
                         {
                             p1cPosn = 74;
                         }
-                        cout << pOnePos[p1cPosn];    //Output modified game board
+                        cout << pOnePos[p1cPosn] << endl;    //Output modified game board
                         break;
                     case 2:
                         break;
@@ -746,23 +756,8 @@ int main()
                     case 1:
                         p2cPosn = 0;
                         cout << "Player 2 has been moved off the game board!" << endl;
-                        cout << " _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n"
-                                "|  _   _ _ _ _ _ _ _ _ _ _ _ _  |\n"
-                                "| | | |              _ _ _ _ _| |\n"
-                                "| | | |           & |_ _ _ _ _  |\n"
-                                "| | | |                       | |\n"
-                                "| | | |                       | |\n"
-                                "| | |_|                       | |\n"
-                                "| |                           | |\n"
-                                "| |  *        SORRY!          | |\n"
-                                "| |                        @  | |\n"
-                                "| |                        _  | |\n"
-                                "| |                       | | | |\n"
-                                "| |                       | | | |\n"
-                                "| |_ _ _ _ _              | | | |\n"
-                                "|  _ _ _ _ _| #           | | | |\n"
-                                "| |_ _ _ _ _ _ _ _ _ _ _ _| |_| |\n"
-                                "|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|\n";
+                        cout << pTwoPos[0] << endl;
+                        cout << endl;
                         break;
                     case 2:
                         break;
@@ -917,8 +912,7 @@ int main()
                 {
                     case 1:
                         cout << "Player 2 chose to move 4 spaces backward." << endl;
-                        p2cPosn -= 4;
-                        cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
+                        p2cPosn -= 4;                       
 
                         //Determine if Player 2 has moved before their safe zone (P2-0 - P2-8)
                         if(p2cPosn == 8)
@@ -957,6 +951,7 @@ int main()
                         {
                             p2cPosn = 60;
                         }
+                        cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
                         break;
                     case 2:
                         cout << "Player 2 had to skip their turn." << endl;
@@ -1003,11 +998,11 @@ int main()
                 cout << "Player 2 drew a 7!" << endl;
 
                 //Check for legal move
-                if(p1cPosn < (p2cPosn - 15))
+                if(p1cPosn < (p2cPosn - 15) && p2cPosn >= 18)
                 {
                     pChoice = 1;
                 }
-                else if(p1cPosn > (p2cPosn - 15) && p1cPosn < 9)
+                else if(p1cPosn > (p2cPosn - 15) && p1cPosn >= 18)
                 {
                     pChoice = 2;
                 }
@@ -1030,8 +1025,7 @@ int main()
                         break;
                     case 2:
                         cout << "Player 2 chose to move their opponent 7 spaces backward." << endl;
-                        p1cPosn -= 7;
-                        cout << pOnePos[p1cPosn] << endl;   //Output modified game board
+                        p1cPosn -= 7;                        
 
                         //Determine if Player 2 has moved before their safe zone (P2-0 - P2-8)
                         if(p2cPosn == 8)
@@ -1070,6 +1064,7 @@ int main()
                         {
                             p2cPosn = 60;
                         }  
+                        cout << pOnePos[p1cPosn] << endl;   //Output modified game board
                         break;
                     case 3:
                         cout << "Player 2 had to skip their turn." << endl;
@@ -1143,8 +1138,7 @@ int main()
                         break;
                     case 2:
                         cout << "Player 2 chose to move 1 space backwards." << endl;
-                        p2cPosn -= 1;
-                        cout << pTwoPos[p2cPosn];   //Output modified game board
+                        p2cPosn -= 1;                        
 
                         //Determine if Player 2 has moved before their safe zone (P2-0 - P2-8)
                         if(p2cPosn == 8)
@@ -1183,6 +1177,7 @@ int main()
                         {
                             p2cPosn = 60;
                         } 
+                        cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
                         break;
                     case 3:
                         cout << "Player 2 had to skip their turn." << endl;
@@ -1219,7 +1214,7 @@ int main()
                         {
                             p2cPosn = 74;
                         }
-                        cout << pTwoPos[p2cPosn];   //Output modified game board
+                        cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
                         break;
                     case 2:              
                         cout << "Player 2 chose to switch places with Player 1." << endl;
@@ -1246,10 +1241,7 @@ int main()
                             temp = p2cPosn;
                             p2cPosn = p1cPosn + 15;
                             p1cPosn = 60 + (temp - 15);
-                        }
-                        cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
-                        cout << endl;
-                        cout << pOnePos[p1cPosn] << endl;   //Output modified game board
+                        }                        
                         
                         //Determine if Player 1 has moved before their safe zone (P1-0 - P1-8)
                         if(p1cPosn == 8)
@@ -1326,6 +1318,9 @@ int main()
                         {
                             p2cPosn = 60;
                         }
+                        cout << pTwoPos[p2cPosn] << endl;   //Output modified game board
+                        cout << endl;
+                        cout << pOnePos[p1cPosn] << endl;   //Output modified game board
                         break;
                     case 3:
                         cout << "Player 2 had to skip their turn." << endl;
@@ -1387,23 +1382,7 @@ int main()
                     case 1:
                         p1cPosn = 0;
                         cout << "Player 1 has been moved off the game board!" << endl;
-                        cout << " _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n"
-                                "|  _   _ _ _ _ _ _ _ _ _ _ _ _  |\n"
-                                "| | | |              _ _ _ _ _| |\n"
-                                "| | | |           & |_ _ _ _ _  |\n"
-                                "| | | |                       | |\n"
-                                "| | | |                       | |\n"
-                                "| | |_|                       | |\n"
-                                "| |                           | |\n"
-                                "| |  *        SORRY!          | |\n"
-                                "| |                        @  | |\n"
-                                "| |                        _  | |\n"
-                                "| |                       | | | |\n"
-                                "| |                       | | | |\n"
-                                "| |_ _ _ _ _              | | | |\n"
-                                "|  _ _ _ _ _| #           | | | |\n"
-                                "| |_ _ _ _ _ _ _ _ _ _ _ _| |_| |\n"
-                                "|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|\n";                   
+                        cout << pOnePos[0] << endl;    
                         break;
                     case 2:
                         cout << "Player 2 had to skip their turn." << endl;

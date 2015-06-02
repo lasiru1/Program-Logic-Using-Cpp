@@ -1,11 +1,12 @@
-//File: main.cpp
-//==========================================================================
-//Programmer: Uriel Salazar
-//==========================================================================
-//Created: May 4, 2015, 6:11 PM
-//==========================================================================
-//Purpose: Project 2 - "Sorry!"
-//==========================================================================
+/**
+ *  \file main.cpp
+ *  \Programmer Uriel Salazar
+ *  \Created May 4, 2015, 6:11 PM
+ *  \Purpose Project II
+ *  College programming project: The family board game "Sorry!" by Parker
+ *  Brothers coded and developed in C++, using NetBeans IDE and Cygwin compiler
+ *  Riverside City College - CSC5 (Program Logic using C++) Section: 43952
+ */
 
 //System Libraries
 #include <iostream>     //Input/Output Library
@@ -30,6 +31,10 @@ void trePlyr();             //Three player version
 void forPlyr();             //Four player version
 
 //Execution begins
+/**
+ * This is the main function of the program.
+ * @return 
+ */
 int main()
 {
     //Seed the random number generator

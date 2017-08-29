@@ -1,9 +1,0 @@
-Exception: STATUS_ACCESS_VIOLATION at eip=6D7290D9
-eax=00004209 ebx=00000000 ecx=80000038 edx=0003FFE4 esi=0028CBA4 edi=0028CA7C
-ebp=0028CC68 esp=0028C920 program=C:\Users\salaz_000\Desktop\Salazar_Uriel_CSC5_43952\Projects\Sorry_v1\dist\Debug\Cygwin-Windows\sorry_v1.exe, pid 6772, thread main
-cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
-Stack trace:
-Frame     Function  Args
-0028CC68  6D7290D9 (00000001, 0028CC8C, 80010100, 610083CF)
-0028CD18  6100842E (00000000, 0028CD74, 61007530, 00000000)
-End of stack trace

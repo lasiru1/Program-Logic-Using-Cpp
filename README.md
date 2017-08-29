@@ -1,5 +1,5 @@
 # Program Logic using C++
-SC-5 Section: 43952
+CSC-5 Section: 43952
 
 
 Riverside City Collge
